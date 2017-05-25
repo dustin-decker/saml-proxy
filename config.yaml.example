@@ -4,6 +4,9 @@ listen_port: 9090
 targets:
   - http://localhost:8080
 
+rate_limit_avg_minute: 600
+rate_limit_burst_minute: 1800
+
 idp_metadata_url: https://some.idp/metadata/32093329
 service_root_url: http://localhost
 cert: myservice.cert

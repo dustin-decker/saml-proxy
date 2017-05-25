@@ -11,24 +11,20 @@ vendors:
   rev: 346938d642f2ec3594ed81d874461961cd0faa76
 - path: github.com/dgrijalva/jwt-go
   rev: 6c8dedd55f8a2e41f605de6d5d66e51ed1f299fc
-- path: github.com/go-stack/stack
-  rev: 7a2f19628aabfe68f0766b59e74d6315f8347d22
-- path: github.com/inconshreveable/log15
-  rev: 39bacc234bf1afd0b68573e95b45871f67ba2cd4
 - path: github.com/jonboulle/clockwork
   rev: bcac9884e7502bb2b474c0339d889cb981a2f27f
 - path: github.com/kr/pretty
   rev: cfb55aafdaf3ec08f0db22699ab822c50091b1c4
 - path: github.com/kr/text
   rev: 7cafcd837844e784b526369c9bce262804aebc60
+- path: github.com/mailgun/minheap
+  rev: 7c28d80e2ada649fc8ab1a37b86d30a2633bd47c
 - path: github.com/mailgun/multibuf
   rev: 565402cd71fbd9c12aa7e295324ea357e970a61e
 - path: github.com/mailgun/timetools
   rev: fd192d755b00c968d312d23f521eb0cdc6f66bd0
-- path: github.com/mattn/go-colorable
-  rev: ded68f7a9561c023e790de24279db7ebf473ea80
-- path: github.com/mattn/go-isatty
-  rev: fc9e8d8ef48496124e79ae0df75490096eccf6fe
+- path: github.com/mailgun/ttlmap
+  rev: 8210f93bcb6393a9f36a22ac02fb3c4f53289850
 - path: github.com/pmezard/go-difflib
   rev: 792786c7400a136282c1664665ae0a8db921c6c2
 - path: github.com/russellhaering/goxmldsig
