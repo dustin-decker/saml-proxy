@@ -4,9 +4,14 @@ import (
 	"crypto/rsa"
 	"crypto/tls"
 	"crypto/x509"
+	"fmt"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
+	"path"
+
+	yaml "gopkg.in/yaml.v2"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/crewjam/saml/samlsp"
@@ -14,6 +19,33 @@ import (
 	"github.com/vulcand/oxy/forward"
 	"github.com/vulcand/oxy/roundrobin"
 )
+
+// Config for reverse proxy settings and RBAC users and groups
+// Unmarshalled from config on disk
+type Config struct {
+	ListenInterface string `yaml:"listen_interface"`
+	ListenPort      int    `yaml:"listen_port"`
+	Targets         []string
+	IdpMetadataURL  string `yaml:"idp_metadata_url"`
+	ServiceRootURL  string `yaml:"service_root_url"`
+	Cert            string
+	Key             string
+}
+
+func (C *Config) getConf() *Config {
+
+	pwd, _ := os.Getwd()
+	yamlFile, err := ioutil.ReadFile(path.Join(pwd, "config.yaml"))
+	if err != nil {
+		log.Error(err)
+	}
+	err = yaml.Unmarshal(yamlFile, C)
+	if err != nil {
+		log.Error(err)
+	}
+
+	return C
+}
 
 func main() {
 	// Log as JSON instead of the default ASCII formatter.
@@ -26,7 +58,10 @@ func main() {
 	// Only log the warning severity or above.
 	log.SetLevel(log.InfoLevel)
 
-	keyPair, err := tls.LoadX509KeyPair("myservice.cert", "myservice.key")
+	var C Config
+	C.getConf()
+
+	keyPair, err := tls.LoadX509KeyPair(C.Cert, C.Key)
 	if err != nil {
 		panic(err)
 	}
@@ -35,12 +70,12 @@ func main() {
 		panic(err)
 	}
 
-	idpMetadataURL, err := url.Parse("https://someidp.com/43943")
+	idpMetadataURL, err := url.Parse(C.IdpMetadataURL)
 	if err != nil {
 		panic(err)
 	}
 
-	rootURL, err := url.Parse("http://localhost")
+	rootURL, err := url.Parse(C.ServiceRootURL)
 	if err != nil {
 		panic(err)
 	}
@@ -52,17 +87,27 @@ func main() {
 		IDPMetadataURL: idpMetadataURL,
 	})
 
+	// reverse proxy layer
 	fwd, _ := forward.New()
+	// load balancing layer
 	lb, _ := roundrobin.New(fwd)
 
 	// buffer will read the request body and will replay the request again in case if forward returned status
 	// corresponding to nework error (e.g. Gateway Timeout)
-	buffer, _ := buffer.New(lb, buffer.Retry(`IsNetworkError() && Attempts() < 2`))
+	buffer, _ := buffer.New(lb, buffer.Retry(`IsNetworkError() && Attempts() < 3`))
 
-	url1, _ := url.Parse("http://localhost:8080")
-	lb.UpsertServer(url1)
+	for _, target := range C.Targets {
+		targetURL, err := url.Parse(target)
+		if err != nil {
+			panic(err)
+		}
+		// add target to the load balancer
+		lb.UpsertServer(targetURL)
+	}
 
+	// This endpoint handles SAML auth flow
 	http.Handle("/saml/", samlSP)
+	// Any other endpoints require valid session cookie
 	http.Handle("/", samlSP.RequireAccount(buffer))
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort), nil)
 }

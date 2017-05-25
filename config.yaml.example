@@ -1,0 +1,10 @@
+listen_interface: 127.0.0.1
+listen_port: 9090
+
+targets:
+  - http://localhost:8080
+
+idp_metadata_url: https://some.idp/metadata/32093329
+service_root_url: http://localhost
+cert: myservice.cert
+key: myservice.key
