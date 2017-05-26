@@ -114,24 +114,45 @@ func main() {
 	})
 
 	// reverse proxy layer
-	fwd, _ := forward.New()
+	fwd, err := forward.New()
+	if err != nil {
+		log.Fatal(err)
+	}
 	// rate-limiting layers
-	extractor, _ := utils.NewExtractor("client.ip")
+	extractor, err := utils.NewExtractor("client.ip")
+	if err != nil {
+		log.Fatal(err)
+	}
 	rates := ratelimit.NewRateSet()
 	rates.Add(time.Second, C.RateLimitAvgMinute*60, C.RateLimitBurstSecond)
-	rm, _ := ratelimit.New(fwd, extractor, rates)
+	rm, err := ratelimit.New(fwd, extractor, rates)
+	if err != nil {
+		log.Fatal(err)
+	}
 	// circuit-breaker layer
 	const triggerNetRatio = `NetworkErrorRatio() > 0.5`
-	cb, _ := cbreaker.New(rm, triggerNetRatio)
+	cb, err := cbreaker.New(rm, triggerNetRatio)
+	if err != nil {
+		log.Fatal(err)
+	}
 	// load balancing layer
-	lb, _ := roundrobin.New(cb)
+	lb, err := roundrobin.New(cb)
+	if err != nil {
+		log.Fatal(err)
+	}
 	// trace layer
-	trace, _ := trace.New(lb, io.Writer(os.Stdout),
+	trace, err := trace.New(lb, io.Writer(os.Stdout),
 		trace.Option(trace.RequestHeaders(C.TraceRequestHeaders...)))
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// buffer will read the request body and will replay the request again in case if forward returned status
 	// corresponding to nework error (e.g. Gateway Timeout)
-	buffer, _ := buffer.New(trace, buffer.Retry(`IsNetworkError() && Attempts() < 3`))
+	buffer, err := buffer.New(trace, buffer.Retry(`IsNetworkError() && Attempts() < 3`))
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	for _, target := range C.Targets {
 		targetURL, err := url.Parse(target)
@@ -146,5 +167,8 @@ func main() {
 	http.Handle("/saml/", samlSP)
 	// Any other endpoints require valid session cookie
 	http.Handle("/", samlSP.RequireAccount(buffer))
-	http.ListenAndServe(fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort), nil)
+	err = http.ListenAndServe(fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort), nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
