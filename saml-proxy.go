@@ -11,6 +11,7 @@ import (
 	"net/url"
 	"os"
 	"path"
+	"runtime"
 	"time"
 
 	yaml "gopkg.in/yaml.v2"
@@ -69,6 +70,22 @@ func main() {
 
 	var C Config
 	C.getConf()
+
+	go func() {
+		for {
+			var m runtime.MemStats
+			runtime.ReadMemStats(&m)
+			log.WithFields(log.Fields{
+				"alloc":              fmt.Sprintf("%v", m.Alloc),
+				"total-alloc":        fmt.Sprintf("%v", m.TotalAlloc/1024),
+				"sys":                fmt.Sprintf("%v", m.Sys/1024),
+				"num-gc":             fmt.Sprintf("%v", m.NumGC),
+				"goroutines":         fmt.Sprintf("%v", runtime.NumGoroutine()),
+				"stop-pause-nanosec": fmt.Sprintf("%v", m.PauseTotalNs),
+			}).Warn("Process stats")
+			time.Sleep(15 * time.Second)
+		}
+	}()
 
 	keyPair, err := tls.LoadX509KeyPair(C.Cert, C.Key)
 	if err != nil {
