@@ -18,4 +18,4 @@ Configure your stuff based on `config.yaml.example`
 
 Create your cert and key `openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"`
 
-Compile and run
+Compile and run with path to config.yaml as the first argument

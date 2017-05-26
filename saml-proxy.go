@@ -45,7 +45,7 @@ type Config struct {
 func (C *Config) getConf() *Config {
 
 	pwd, _ := os.Getwd()
-	yamlFile, err := ioutil.ReadFile(path.Join(pwd, "config.yaml"))
+	yamlFile, err := ioutil.ReadFile(path.Join(pwd, os.Args[1]))
 	if err != nil {
 		log.Error(err)
 	}
