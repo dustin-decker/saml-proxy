@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -21,6 +22,7 @@ import (
 	"github.com/vulcand/oxy/forward"
 	"github.com/vulcand/oxy/ratelimit"
 	"github.com/vulcand/oxy/roundrobin"
+	"github.com/vulcand/oxy/trace"
 	"github.com/vulcand/oxy/utils"
 )
 
@@ -34,8 +36,9 @@ type Config struct {
 	ServiceRootURL       string `yaml:"service_root_url"`
 	Cert                 string
 	Key                  string
-	RateLimitAvgMinute   int64 `yaml:"rate_limit_avg_minute"`
-	RateLimitBurstMinute int64 `yaml:"rate_limit_burst_minute"`
+	RateLimitAvgMinute   int64    `yaml:"rate_limit_avg_minute"`
+	RateLimitBurstSecond int64    `yaml:"rate_limit_burst_second"`
+	TraceRequestHeaders  []string `yaml:"trace_request_headers"`
 }
 
 func (C *Config) getConf() *Config {
@@ -62,7 +65,7 @@ func main() {
 	log.SetOutput(os.Stdout)
 
 	// Only log the warning severity or above.
-	log.SetLevel(log.InfoLevel)
+	log.SetLevel(log.WarnLevel)
 
 	var C Config
 	C.getConf()
@@ -98,17 +101,20 @@ func main() {
 	// rate-limiting layers
 	extractor, _ := utils.NewExtractor("client.ip")
 	rates := ratelimit.NewRateSet()
-	rates.Add(time.Minute, C.RateLimitAvgMinute, C.RateLimitBurstMinute)
+	rates.Add(time.Second, C.RateLimitAvgMinute*60, C.RateLimitBurstSecond)
 	rm, _ := ratelimit.New(fwd, extractor, rates)
 	// circuit-breaker layer
 	const triggerNetRatio = `NetworkErrorRatio() > 0.5`
 	cb, _ := cbreaker.New(rm, triggerNetRatio)
 	// load balancing layer
 	lb, _ := roundrobin.New(cb)
+	// trace layer
+	trace, _ := trace.New(lb, io.Writer(os.Stdout),
+		trace.Option(trace.RequestHeaders(C.TraceRequestHeaders...)))
 
 	// buffer will read the request body and will replay the request again in case if forward returned status
 	// corresponding to nework error (e.g. Gateway Timeout)
-	buffer, _ := buffer.New(lb, buffer.Retry(`IsNetworkError() && Attempts() < 3`))
+	buffer, _ := buffer.New(trace, buffer.Retry(`IsNetworkError() && Attempts() < 3`))
 
 	for _, target := range C.Targets {
 		targetURL, err := url.Parse(target)

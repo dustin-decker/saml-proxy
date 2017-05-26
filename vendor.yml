@@ -6,7 +6,7 @@ vendors:
 - path: github.com/codahale/hdrhistogram
   rev: 3a0bb77429bd3a61596f5e8a3172445844342120
 - path: github.com/crewjam/saml
-  rev: 55a313682ef3ca901dd5da421756b56b6d476203
+  rev: c056b81cf1d8e143ed0eea21ee862ac333e33eac
 - path: github.com/davecgh/go-spew
   rev: 346938d642f2ec3594ed81d874461961cd0faa76
 - path: github.com/dgrijalva/jwt-go
@@ -40,9 +40,9 @@ vendors:
 - path: golang.org/x/crypto
   rev: 7e9105388ebff089b3f99f0ef676ea55a6da3a7e
 - path: golang.org/x/net
-  rev: a8e8f92cd65f5ff48599999fa4001d9b95ecea85
+  rev: 7dcfb8076726a3fdd9353b6b8a1f1b6be6811bd6
 - path: golang.org/x/sys
-  rev: dbc2be9168a660ef302e04b6ff6406de6f967473
+  rev: a55a76086885b80f79961eacb876ebd8caf3868d
 - path: gopkg.in/check.v1
   rev: 20d25e2804050c1cd24a7eea1e7a6447dd0e74ec
 - path: gopkg.in/mgo.v2
