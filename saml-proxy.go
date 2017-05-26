@@ -89,21 +89,21 @@ func main() {
 
 	keyPair, err := tls.LoadX509KeyPair(C.Cert, C.Key)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	keyPair.Leaf, err = x509.ParseCertificate(keyPair.Certificate[0])
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	idpMetadataURL, err := url.Parse(C.IdpMetadataURL)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	rootURL, err := url.Parse(C.ServiceRootURL)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	samlSP, _ := samlsp.New(samlsp.Options{
@@ -136,7 +136,7 @@ func main() {
 	for _, target := range C.Targets {
 		targetURL, err := url.Parse(target)
 		if err != nil {
-			panic(err)
+			log.Fatal(err)
 		}
 		// add target to the load balancer
 		lb.UpsertServer(targetURL)
