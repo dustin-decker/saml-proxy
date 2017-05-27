@@ -163,12 +163,15 @@ func main() {
 		lb.UpsertServer(targetURL)
 	}
 
+	srv := &http.Server{
+		Addr:         fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort),
+		Handler:      samlSP.RequireAccount(buffer),
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 5 * time.Second,
+		IdleTimeout:  120 * time.Second,
+	}
+
 	// This endpoint handles SAML auth flow
 	http.Handle("/saml/", samlSP)
-	// Any other endpoints require valid session cookie
-	http.Handle("/", samlSP.RequireAccount(buffer))
-	err = http.ListenAndServe(fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort), nil)
-	if err != nil {
-		log.Fatal(err)
-	}
+	log.Fatal(srv.ListenAndServe())
 }
