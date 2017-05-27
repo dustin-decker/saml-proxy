@@ -18,6 +18,7 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/crewjam/saml/samlsp"
+	"github.com/julienschmidt/httprouter"
 	"github.com/vulcand/oxy/buffer"
 	"github.com/vulcand/oxy/cbreaker"
 	"github.com/vulcand/oxy/forward"
@@ -163,15 +164,24 @@ func main() {
 		lb.UpsertServer(targetURL)
 	}
 
+	// Use mux for explicit paths and so no other routes are accidently exposed
+	router := httprouter.New()
+	// These endpoints require valid session cookie
+	router.Handler("GET", "/", samlSP.RequireAccount(buffer))
+	router.Handler("POST", "/", samlSP.RequireAccount(buffer))
+	router.Handler("PUT", "/", samlSP.RequireAccount(buffer))
+	router.Handler("DELETE", "/", samlSP.RequireAccount(buffer))
+	router.Handler("PATCH", "/", samlSP.RequireAccount(buffer))
+	// This endpoint handles SAML auth flow
+	router.Handler("GET", "/saml/", samlSP)
+
 	srv := &http.Server{
 		Addr:         fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort),
-		Handler:      samlSP.RequireAccount(buffer),
+		Handler:      router,
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 5 * time.Second,
 		IdleTimeout:  120 * time.Second,
 	}
 
-	// This endpoint handles SAML auth flow
-	http.Handle("/saml/", samlSP)
 	log.Fatal(srv.ListenAndServe())
 }
