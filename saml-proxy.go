@@ -166,14 +166,16 @@ func main() {
 
 	// Use mux for explicit paths and so no other routes are accidently exposed
 	router := httprouter.New()
+
+	// This endpoint handles SAML auth flow
+	router.Handler("GET", "/saml/*path", samlSP)
+	router.Handler("POST", "/saml/*path", samlSP)
 	// These endpoints require valid session cookie
 	router.Handler("GET", "/", samlSP.RequireAccount(buffer))
 	router.Handler("POST", "/", samlSP.RequireAccount(buffer))
 	router.Handler("PUT", "/", samlSP.RequireAccount(buffer))
 	router.Handler("DELETE", "/", samlSP.RequireAccount(buffer))
 	router.Handler("PATCH", "/", samlSP.RequireAccount(buffer))
-	// This endpoint handles SAML auth flow
-	router.Handler("GET", "/saml/", samlSP)
 
 	srv := &http.Server{
 		Addr:         fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort),
