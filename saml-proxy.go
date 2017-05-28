@@ -16,6 +16,8 @@ import (
 
 	yaml "gopkg.in/yaml.v2"
 
+	"net/http/pprof"
+
 	log "github.com/Sirupsen/logrus"
 	"github.com/crewjam/saml/samlsp"
 	"github.com/julienschmidt/httprouter"
@@ -41,6 +43,7 @@ type Config struct {
 	RateLimitAvgMinute   int64    `yaml:"rate_limit_avg_minute"`
 	RateLimitBurstSecond int64    `yaml:"rate_limit_burst_second"`
 	TraceRequestHeaders  []string `yaml:"trace_request_headers"`
+	LogLevel             string   `yaml:"log_level"`
 }
 
 func (C *Config) getConf() *Config {
@@ -58,19 +61,30 @@ func (C *Config) getConf() *Config {
 	return C
 }
 
+func attachProfiler(router *httprouter.Router) {
+	router.HandlerFunc("GET", "/debug/pprof/", pprof.Index)
+	router.HandlerFunc("GET", "/debug/pprof/cmdline", pprof.Cmdline)
+	router.HandlerFunc("GET", "/debug/pprof/profile", pprof.Profile)
+	router.HandlerFunc("GET", "/debug/pprof/symbol", pprof.Symbol)
+
+	// Manually add support for paths linked to by index page at /debug/pprof/
+	router.Handler("GET", "/debug/pprof/goroutine", pprof.Handler("goroutine"))
+	router.Handler("GET", "/debug/pprof/heap", pprof.Handler("heap"))
+	router.Handler("GET", "/debug/pprof/threadcreate", pprof.Handler("threadcreate"))
+	router.Handler("GET", "/debug/pprof/block", pprof.Handler("block"))
+}
+
 func main() {
-	// Log as JSON instead of the default ASCII formatter.
-	log.SetFormatter(&log.JSONFormatter{})
-
-	// Output to stdout instead of the default stderr
-	// Can be any io.Writer, see below for File example
-	log.SetOutput(os.Stdout)
-
-	// Only log the warning severity or above.
-	log.SetLevel(log.WarnLevel)
-
 	var C Config
 	C.getConf()
+
+	log.SetFormatter(&log.JSONFormatter{})
+	log.SetOutput(os.Stdout)
+	logLevel, err := log.ParseLevel(C.LogLevel)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.SetLevel(logLevel)
 
 	go func() {
 		for {
@@ -167,6 +181,10 @@ func main() {
 	// Use mux for explicit paths and so no other routes are accidently exposed
 	router := httprouter.New()
 
+	if logLevel == log.DebugLevel || logLevel == log.InfoLevel {
+		attachProfiler(router)
+	}
+
 	// This endpoint handles SAML auth flow
 	router.Handler("GET", "/saml/*path", samlSP)
 	router.Handler("POST", "/saml/*path", samlSP)
@@ -178,10 +196,12 @@ func main() {
 	router.Handler("PATCH", "/", samlSP.RequireAccount(buffer))
 
 	srv := &http.Server{
-		Addr:         fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort),
-		Handler:      router,
-		ReadTimeout:  5 * time.Second,
-		WriteTimeout: 5 * time.Second,
+		Addr:    fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort),
+		Handler: router,
+		// This breaks streaming requests
+		ReadTimeout: 45 * time.Second,
+		// This breaks long downloads
+		WriteTimeout: 45 * time.Second,
 		IdleTimeout:  120 * time.Second,
 	}
 

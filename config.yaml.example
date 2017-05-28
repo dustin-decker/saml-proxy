@@ -11,3 +11,7 @@ idp_metadata_url: https://some.idp/metadata/32093329
 service_root_url: http://localhost:9090
 cert: myservice.cert
 key: myservice.key
+
+# panic, fatal, error, warn, info, debug
+# info and debug log cookie information!
+log_level: debug
