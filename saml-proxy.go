@@ -20,7 +20,6 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/crewjam/saml/samlsp"
-	"github.com/julienschmidt/httprouter"
 	"github.com/vulcand/oxy/buffer"
 	"github.com/vulcand/oxy/cbreaker"
 	"github.com/vulcand/oxy/forward"
@@ -28,6 +27,8 @@ import (
 	"github.com/vulcand/oxy/roundrobin"
 	"github.com/vulcand/oxy/trace"
 	"github.com/vulcand/oxy/utils"
+	goji "goji.io"
+	"goji.io/pat"
 )
 
 // Config for reverse proxy settings and RBAC users and groups
@@ -61,17 +62,17 @@ func (C *Config) getConf() *Config {
 	return C
 }
 
-func attachProfiler(router *httprouter.Router) {
-	router.HandlerFunc("GET", "/debug/pprof/", pprof.Index)
-	router.HandlerFunc("GET", "/debug/pprof/cmdline", pprof.Cmdline)
-	router.HandlerFunc("GET", "/debug/pprof/profile", pprof.Profile)
-	router.HandlerFunc("GET", "/debug/pprof/symbol", pprof.Symbol)
+func attachProfiler(router *goji.Mux) {
+	router.HandleFunc(pat.New("/debug/pprof/"), pprof.Index)
+	router.HandleFunc(pat.New("/debug/pprof/cmdline"), pprof.Cmdline)
+	router.HandleFunc(pat.New("/debug/pprof/profile"), pprof.Profile)
+	router.HandleFunc(pat.New("/debug/pprof/symbol"), pprof.Symbol)
 
 	// Manually add support for paths linked to by index page at /debug/pprof/
-	router.Handler("GET", "/debug/pprof/goroutine", pprof.Handler("goroutine"))
-	router.Handler("GET", "/debug/pprof/heap", pprof.Handler("heap"))
-	router.Handler("GET", "/debug/pprof/threadcreate", pprof.Handler("threadcreate"))
-	router.Handler("GET", "/debug/pprof/block", pprof.Handler("block"))
+	router.Handle(pat.New("/debug/pprof/goroutine"), pprof.Handler("goroutine"))
+	router.Handle(pat.New("/debug/pprof/heap"), pprof.Handler("heap"))
+	router.Handle(pat.New("/debug/pprof/threadcreate"), pprof.Handler("threadcreate"))
+	router.Handle(pat.New("/debug/pprof/block"), pprof.Handler("block"))
 }
 
 func main() {
@@ -179,21 +180,16 @@ func main() {
 	}
 
 	// Use mux for explicit paths and so no other routes are accidently exposed
-	router := httprouter.New()
+	router := goji.NewMux()
 
 	if logLevel == log.DebugLevel || logLevel == log.InfoLevel {
 		attachProfiler(router)
 	}
 
 	// This endpoint handles SAML auth flow
-	router.Handler("GET", "/saml/*path", samlSP)
-	router.Handler("POST", "/saml/*path", samlSP)
+	router.Handle(pat.New("/saml/*"), samlSP)
 	// These endpoints require valid session cookie
-	router.Handler("GET", "/", samlSP.RequireAccount(buffer))
-	router.Handler("POST", "/", samlSP.RequireAccount(buffer))
-	router.Handler("PUT", "/", samlSP.RequireAccount(buffer))
-	router.Handler("DELETE", "/", samlSP.RequireAccount(buffer))
-	router.Handler("PATCH", "/", samlSP.RequireAccount(buffer))
+	router.Handle(pat.New("/*"), samlSP.RequireAccount(buffer))
 
 	srv := &http.Server{
 		Addr:    fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort),

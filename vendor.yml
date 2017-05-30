@@ -27,6 +27,8 @@ vendors:
   rev: 22b8db69af63ed27e65daa2fdc428d9d1cb2d1c6
 - path: github.com/vulcand/predicate
   rev: 19b9dde14240d94c804ae5736ad0e1de10bf8fe6
+- path: goji.io
+  rev: 0d89ff54b2c18c9c4ba530e32496aef902d3c6cd
 - path: golang.org/x/crypto
   rev: 7e9105388ebff089b3f99f0ef676ea55a6da3a7e
 - path: golang.org/x/sys
