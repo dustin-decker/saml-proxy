@@ -1,4 +1,4 @@
-FROM golang:1.7
+FROM golang:1.8
 RUN go get -u github.com/govend/govend
 COPY . /go/src/github.com/sevoma/SzechuanSauce
 WORKDIR /go/src/github.com/sevoma/SzechuanSauce
