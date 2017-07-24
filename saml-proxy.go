@@ -127,6 +127,7 @@ func main() {
 		Key:            keyPair.PrivateKey.(*rsa.PrivateKey),
 		Certificate:    keyPair.Leaf,
 		IDPMetadataURL: idpMetadataURL,
+		CookieMaxAge:   48 * time.Hour,
 	})
 
 	// reverse proxy layer
