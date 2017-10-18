@@ -20,10 +20,10 @@
   revision = "3a0bb77429bd3a61596f5e8a3172445844342120"
 
 [[projects]]
+  branch = "master"
   name = "github.com/crewjam/saml"
   packages = [".","logger","samlsp","xmlenc"]
-  revision = "6b5dd2d26974f7f5e59132ef5921fab7993794d7"
-  version = "0.2.0"
+  revision = "5e89d545f563261a14cd84483eb5ff10233e208e"
 
 [[projects]]
   name = "github.com/dgrijalva/jwt-go"
@@ -118,6 +118,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "12516c2909f1679b88f5ec6f3b23d8482d908073fe755e3352f7547babbad5f4"
+  inputs-digest = "5cf58bdb13e9ecea871eafb66fd5f789697b3e7b3a4287d1ebc33b52016bca78"
   solver-name = "gps-cdcl"
   solver-version = 1

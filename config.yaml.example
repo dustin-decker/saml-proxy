@@ -4,14 +4,16 @@ listen_port: 9090
 targets:
   - http://localhost:8080
 
-rate_limit_avg_minute: 200
-rate_limit_burst_second: 20
+rate_limit_avg_minute: 500
+rate_limit_burst_second: 50
 
 idp_metadata_url: https://some.idp/metadata/32093329
 service_root_url: http://localhost:9090
 cert: myservice.cert
 key: myservice.key
 
+cookie_max_age: 4h
+
 # panic, fatal, error, warn, info, debug
-# info and debug log cookie information!
-log_level: debug
+# info and debug log cookie information! this can lead to session hijacking!
+log_level: warn

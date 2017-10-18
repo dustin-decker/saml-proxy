@@ -27,7 +27,7 @@
 
 [[constraint]]
   name = "github.com/crewjam/saml"
-  version = "0.2.0"
+  branch = "master"
 
 [[constraint]]
   branch = "archis-dev"

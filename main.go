@@ -41,10 +41,11 @@ type Config struct {
 	ServiceRootURL       string `yaml:"service_root_url"`
 	Cert                 string
 	Key                  string
-	RateLimitAvgMinute   int64    `yaml:"rate_limit_avg_minute"`
-	RateLimitBurstSecond int64    `yaml:"rate_limit_burst_second"`
-	TraceRequestHeaders  []string `yaml:"trace_request_headers"`
-	LogLevel             string   `yaml:"log_level"`
+	RateLimitAvgMinute   int64         `yaml:"rate_limit_avg_minute"`
+	RateLimitBurstSecond int64         `yaml:"rate_limit_burst_second"`
+	TraceRequestHeaders  []string      `yaml:"trace_request_headers"`
+	CookieMaxAge         time.Duration `yaml:"cookie_max_age"`
+	LogLevel             string        `yaml:"log_level"`
 }
 
 func (C *Config) getConf() *Config {
@@ -99,7 +100,7 @@ func main() {
 				"goroutines":         fmt.Sprintf("%v", runtime.NumGoroutine()),
 				"stop-pause-nanosec": fmt.Sprintf("%v", m.PauseTotalNs),
 			}).Warn("Process stats")
-			time.Sleep(15 * time.Second)
+			time.Sleep(60 * time.Second)
 		}
 	}()
 
@@ -127,7 +128,7 @@ func main() {
 		Key:            keyPair.PrivateKey.(*rsa.PrivateKey),
 		Certificate:    keyPair.Leaf,
 		IDPMetadataURL: idpMetadataURL,
-		CookieMaxAge:   48 * time.Hour,
+		CookieMaxAge:   C.CookieMaxAge,
 	})
 
 	// reverse proxy layer
