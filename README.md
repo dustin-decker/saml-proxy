@@ -8,11 +8,13 @@ Credit where credit is due:
 - github.com/crewjam/saml for the fantastic SAML+ library
 - github.com/vulcand/oxy for most of the higher-level network components
 
-Your contributions made this thing a dream to slap together.
+## Roadmap
+- Add optional mutual TLS authentication
+- Support custom entity descriptor
 
 ## Get up and running
 Install deps:
-`govend -v`
+`dep ensure`
 
 Configure your stuff based on `config.yaml.example`
 
