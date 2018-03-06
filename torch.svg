@@ -381,7 +381,7 @@
 <text text-anchor="" x="549.00" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/buffer.(*bufferWriter).Write (18 samples, 0.88%)</title><rect x="693.3" y="273" width="10.4" height="15.0" fill="rgb(245,98,18)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/buffer.(*bufferWriter).Write (18 samples, 0.88%)</title><rect x="693.3" y="273" width="10.4" height="15.0" fill="rgb(245,98,18)" rx="2" ry="2" />
 <text text-anchor="" x="696.28" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -509,7 +509,7 @@
 <text text-anchor="" x="282.73" y="491.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/utils.RemoveHeaders (2 samples, 0.10%)</title><rect x="673.1" y="305" width="1.1" height="15.0" fill="rgb(241,208,4)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/utils.RemoveHeaders (2 samples, 0.10%)</title><rect x="673.1" y="305" width="1.1" height="15.0" fill="rgb(241,208,4)" rx="2" ry="2" />
 <text text-anchor="" x="676.06" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -681,7 +681,7 @@
 <text text-anchor="" x="207.07" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/roundrobin.(*RoundRobin).ServeHTTP (225 samples, 11.01%)</title><rect x="664.4" y="433" width="130.0" height="15.0" fill="rgb(213,55,17)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/roundrobin.(*RoundRobin).ServeHTTP (225 samples, 11.01%)</title><rect x="664.4" y="433" width="130.0" height="15.0" fill="rgb(213,55,17)" rx="2" ry="2" />
 <text text-anchor="" x="667.40" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevom..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -913,7 +913,7 @@
 <text text-anchor="" x="622.35" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/utils.CopyHeaders (9 samples, 0.44%)</title><rect x="686.9" y="337" width="5.2" height="15.0" fill="rgb(208,81,21)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/utils.CopyHeaders (9 samples, 0.44%)</title><rect x="686.9" y="337" width="5.2" height="15.0" fill="rgb(208,81,21)" rx="2" ry="2" />
 <text text-anchor="" x="689.93" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -957,7 +957,7 @@
 <text text-anchor="" x="714.76" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/forward.(*Forwarder).ServeHTTP (203 samples, 9.94%)</title><rect x="671.3" y="369" width="117.3" height="15.0" fill="rgb(211,85,28)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/forward.(*Forwarder).ServeHTTP (203 samples, 9.94%)</title><rect x="671.3" y="369" width="117.3" height="15.0" fill="rgb(211,85,28)" rx="2" ry="2" />
 <text text-anchor="" x="674.33" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sev..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -1057,7 +1057,7 @@
 <text text-anchor="" x="803.13" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/memmetrics.(*HDRHistogram).RecordLatencies (2 samples, 0.10%)</title><rect x="669.0" y="337" width="1.2" height="15.0" fill="rgb(212,106,4)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/memmetrics.(*HDRHistogram).RecordLatencies (2 samples, 0.10%)</title><rect x="669.0" y="337" width="1.2" height="15.0" fill="rgb(212,106,4)" rx="2" ry="2" />
 <text text-anchor="" x="672.02" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -1797,7 +1797,7 @@
 <text text-anchor="" x="591.16" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/utils.(*ProxyWriter).Write (18 samples, 0.88%)</title><rect x="693.3" y="289" width="10.4" height="15.0" fill="rgb(209,211,15)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/utils.(*ProxyWriter).Write (18 samples, 0.88%)</title><rect x="693.3" y="289" width="10.4" height="15.0" fill="rgb(209,211,15)" rx="2" ry="2" />
 <text text-anchor="" x="696.28" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -1889,7 +1889,7 @@
 <text text-anchor="" x="644.87" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/mailgun/multibuf.(*multiReaderSeek).Size (1 samples, 0.05%)</title><rect x="623.4" y="449" width="0.6" height="15.0" fill="rgb(215,112,13)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/mailgun/multibuf.(*multiReaderSeek).Size (1 samples, 0.05%)</title><rect x="623.4" y="449" width="0.6" height="15.0" fill="rgb(215,112,13)" rx="2" ry="2" />
 <text text-anchor="" x="626.39" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -2109,7 +2109,7 @@
 <text text-anchor="" x="619.46" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/codahale/hdrhistogram.(*Histogram).RecordValues (2 samples, 0.10%)</title><rect x="669.0" y="305" width="1.2" height="15.0" fill="rgb(237,55,52)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/codahale/hdrhistogram.(*Histogram).RecordValues (2 samples, 0.10%)</title><rect x="669.0" y="305" width="1.2" height="15.0" fill="rgb(237,55,52)" rx="2" ry="2" />
 <text text-anchor="" x="672.02" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -2301,8 +2301,8 @@
 <text text-anchor="" x="880.53" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/julienschmidt/httprouter.(*Router).Handler.func1 (699 samples, 34.21%)</title><rect x="425.9" y="513" width="403.7" height="15.0" fill="rgb(211,127,49)" rx="2" ry="2" />
-<text text-anchor="" x="428.86" y="523.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevoma/SzechuanSauce/vendor/github.com/julie..</text>
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/julienschmidt/httprouter.(*Router).Handler.func1 (699 samples, 34.21%)</title><rect x="425.9" y="513" width="403.7" height="15.0" fill="rgb(211,127,49)" rx="2" ry="2" />
+<text text-anchor="" x="428.86" y="523.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/dustin-decker/saml-proxy/vendor/github.com/julie..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
 <title>runtime.systemstack (2 samples, 0.10%)</title><rect x="342.1" y="449" width="1.2" height="15.0" fill="rgb(248,14,36)" rx="2" ry="2" />
@@ -2881,7 +2881,7 @@
 <text text-anchor="" x="997.20" y="539.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/cbreaker.(*CircuitBreaker).isStandby (1 samples, 0.05%)</title><rect x="667.3" y="385" width="0.6" height="15.0" fill="rgb(239,156,14)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/cbreaker.(*CircuitBreaker).isStandby (1 samples, 0.05%)</title><rect x="667.3" y="385" width="0.6" height="15.0" fill="rgb(239,156,14)" rx="2" ry="2" />
 <text text-anchor="" x="670.29" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -3109,7 +3109,7 @@
 <text text-anchor="" x="343.95" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/forward.isWebsocketRequest.func1 (3 samples, 0.15%)</title><rect x="786.8" y="337" width="1.8" height="15.0" fill="rgb(210,110,14)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/forward.isWebsocketRequest.func1 (3 samples, 0.15%)</title><rect x="786.8" y="337" width="1.8" height="15.0" fill="rgb(210,110,14)" rx="2" ry="2" />
 <text text-anchor="" x="789.85" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -3305,7 +3305,7 @@
 <text text-anchor="" x="104.26" y="491.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/dgrijalva/jwt-go.GetSigningMethod (2 samples, 0.10%)</title><rect x="593.4" y="417" width="1.1" height="15.0" fill="rgb(243,22,16)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/dgrijalva/jwt-go.GetSigningMethod (2 samples, 0.10%)</title><rect x="593.4" y="417" width="1.1" height="15.0" fill="rgb(243,22,16)" rx="2" ry="2" />
 <text text-anchor="" x="596.36" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -3405,7 +3405,7 @@
 <text text-anchor="" x="300.06" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/cbreaker.(*CircuitBreaker).activateFallback (3 samples, 0.15%)</title><rect x="666.1" y="401" width="1.8" height="15.0" fill="rgb(213,190,45)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/cbreaker.(*CircuitBreaker).activateFallback (3 samples, 0.15%)</title><rect x="666.1" y="401" width="1.8" height="15.0" fill="rgb(213,190,45)" rx="2" ry="2" />
 <text text-anchor="" x="669.13" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -3485,7 +3485,7 @@
 <text text-anchor="" x="972.94" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/utils.CopyHeaders (7 samples, 0.34%)</title><rect x="680.6" y="321" width="4.0" height="15.0" fill="rgb(225,50,54)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/utils.CopyHeaders (7 samples, 0.34%)</title><rect x="680.6" y="321" width="4.0" height="15.0" fill="rgb(225,50,54)" rx="2" ry="2" />
 <text text-anchor="" x="683.57" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -3697,7 +3697,7 @@
 <text text-anchor="" x="147.00" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/forward.(*httpForwarder).copyRequest (26 samples, 1.27%)</title><rect x="671.9" y="337" width="15.0" height="15.0" fill="rgb(254,42,48)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/forward.(*httpForwarder).copyRequest (26 samples, 1.27%)</title><rect x="671.9" y="337" width="15.0" height="15.0" fill="rgb(254,42,48)" rx="2" ry="2" />
 <text text-anchor="" x="674.91" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -3873,7 +3873,7 @@
 <text text-anchor="" x="833.17" y="555.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/crewjam/saml/samlsp.(*Middleware).IsAuthorized.func1 (57 samples, 2.79%)</title><rect x="512.5" y="417" width="32.9" height="15.0" fill="rgb(208,119,3)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/crewjam/saml/samlsp.(*Middleware).IsAuthorized.func1 (57 samples, 2.79%)</title><rect x="512.5" y="417" width="32.9" height="15.0" fill="rgb(208,119,3)" rx="2" ry="2" />
 <text text-anchor="" x="515.50" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >gi..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -4037,8 +4037,8 @@
 <text text-anchor="" x="997.78" y="507.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/crewjam/saml/samlsp.(*Middleware).RequireAccount.func1 (699 samples, 34.21%)</title><rect x="425.9" y="481" width="403.7" height="15.0" fill="rgb(215,104,48)" rx="2" ry="2" />
-<text text-anchor="" x="428.86" y="491.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevoma/SzechuanSauce/vendor/github.com/crewj..</text>
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/crewjam/saml/samlsp.(*Middleware).RequireAccount.func1 (699 samples, 34.21%)</title><rect x="425.9" y="481" width="403.7" height="15.0" fill="rgb(215,104,48)" rx="2" ry="2" />
+<text text-anchor="" x="428.86" y="491.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/dustin-decker/saml-proxy/vendor/github.com/crewj..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
 <title>runtime.(*mcache).nextFree.func1 (1 samples, 0.05%)</title><rect x="751.6" y="209" width="0.6" height="15.0" fill="rgb(219,21,9)" rx="2" ry="2" />
@@ -4069,7 +4069,7 @@
 <text text-anchor="" x="979.87" y="491.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/utils.ExtractorFunc.Extract (3 samples, 0.15%)</title><rect x="790.9" y="369" width="1.7" height="15.0" fill="rgb(212,217,31)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/utils.ExtractorFunc.Extract (3 samples, 0.15%)</title><rect x="790.9" y="369" width="1.7" height="15.0" fill="rgb(212,217,31)" rx="2" ry="2" />
 <text text-anchor="" x="793.89" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -4081,7 +4081,7 @@
 <text text-anchor="" x="899.59" y="555.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/memmetrics.(*HDRHistogram).RecordValues (2 samples, 0.10%)</title><rect x="669.0" y="321" width="1.2" height="15.0" fill="rgb(207,176,36)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/memmetrics.(*HDRHistogram).RecordValues (2 samples, 0.10%)</title><rect x="669.0" y="321" width="1.2" height="15.0" fill="rgb(207,176,36)" rx="2" ry="2" />
 <text text-anchor="" x="672.02" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -4413,7 +4413,7 @@
 <text text-anchor="" x="811.80" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/cbreaker.(*CircuitBreaker).checkAndSet (1 samples, 0.05%)</title><rect x="667.9" y="385" width="0.5" height="15.0" fill="rgb(240,206,23)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/cbreaker.(*CircuitBreaker).checkAndSet (1 samples, 0.05%)</title><rect x="667.9" y="385" width="0.5" height="15.0" fill="rgb(240,206,23)" rx="2" ry="2" />
 <text text-anchor="" x="670.87" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -4513,7 +4513,7 @@
 <text text-anchor="" x="744.80" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/buffer.and.func1 (2 samples, 0.10%)</title><rect x="633.8" y="449" width="1.1" height="15.0" fill="rgb(234,141,37)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/buffer.and.func1 (2 samples, 0.10%)</title><rect x="633.8" y="449" width="1.1" height="15.0" fill="rgb(234,141,37)" rx="2" ry="2" />
 <text text-anchor="" x="636.79" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -4685,8 +4685,8 @@
 <text text-anchor="" x="315.08" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/julienschmidt/httprouter.(*Router).ServeHTTP (703 samples, 34.41%)</title><rect x="424.1" y="529" width="406.1" height="15.0" fill="rgb(212,29,40)" rx="2" ry="2" />
-<text text-anchor="" x="427.13" y="539.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevoma/SzechuanSauce/vendor/github.com/julie..</text>
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/julienschmidt/httprouter.(*Router).ServeHTTP (703 samples, 34.41%)</title><rect x="424.1" y="529" width="406.1" height="15.0" fill="rgb(212,29,40)" rx="2" ry="2" />
+<text text-anchor="" x="427.13" y="539.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/dustin-decker/saml-proxy/vendor/github.com/julie..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
 <title>runtime.gcAssistAlloc1 (2 samples, 0.10%)</title><rect x="592.2" y="273" width="1.2" height="15.0" fill="rgb(223,75,51)" rx="2" ry="2" />
@@ -4709,7 +4709,7 @@
 <text text-anchor="" x="257.89" y="507.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/ratelimit.(*TokenLimiter).ServeHTTP (212 samples, 10.38%)</title><rect x="670.2" y="385" width="122.4" height="15.0" fill="rgb(208,162,50)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/ratelimit.(*TokenLimiter).ServeHTTP (212 samples, 10.38%)</title><rect x="670.2" y="385" width="122.4" height="15.0" fill="rgb(208,162,50)" rx="2" ry="2" />
 <text text-anchor="" x="673.18" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevo..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -4901,7 +4901,7 @@
 <text text-anchor="" x="901.90" y="523.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/Sirupsen/logrus.GetLevel (1 samples, 0.05%)</title><rect x="665.6" y="417" width="0.5" height="15.0" fill="rgb(231,45,24)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/Sirupsen/logrus.GetLevel (1 samples, 0.05%)</title><rect x="665.6" y="417" width="0.5" height="15.0" fill="rgb(231,45,24)" rx="2" ry="2" />
 <text text-anchor="" x="668.56" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -5009,7 +5009,7 @@
 <text text-anchor="" x="562.86" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/mailgun/multibuf.(*multiReaderSeek).WriteTo (29 samples, 1.42%)</title><rect x="802.4" y="417" width="16.8" height="15.0" fill="rgb(233,4,51)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/mailgun/multibuf.(*multiReaderSeek).WriteTo (29 samples, 1.42%)</title><rect x="802.4" y="417" width="16.8" height="15.0" fill="rgb(233,4,51)" rx="2" ry="2" />
 <text text-anchor="" x="805.44" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -5093,7 +5093,7 @@
 <text text-anchor="" x="681.26" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/mailgun/multibuf.(*writerOnce).write (18 samples, 0.88%)</title><rect x="693.3" y="241" width="10.4" height="15.0" fill="rgb(245,67,1)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/mailgun/multibuf.(*writerOnce).write (18 samples, 0.88%)</title><rect x="693.3" y="241" width="10.4" height="15.0" fill="rgb(245,67,1)" rx="2" ry="2" />
 <text text-anchor="" x="696.28" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -5301,7 +5301,7 @@
 <text text-anchor="" x="360.70" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/utils.extractClientIP (2 samples, 0.10%)</title><rect x="791.5" y="353" width="1.1" height="15.0" fill="rgb(250,209,31)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/utils.extractClientIP (2 samples, 0.10%)</title><rect x="791.5" y="353" width="1.1" height="15.0" fill="rgb(250,209,31)" rx="2" ry="2" />
 <text text-anchor="" x="794.47" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -5429,7 +5429,7 @@
 <text text-anchor="" x="282.15" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/forward.isWebsocketRequest (4 samples, 0.20%)</title><rect x="786.3" y="353" width="2.3" height="15.0" fill="rgb(236,218,34)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/forward.isWebsocketRequest (4 samples, 0.20%)</title><rect x="786.3" y="353" width="2.3" height="15.0" fill="rgb(236,218,34)" rx="2" ry="2" />
 <text text-anchor="" x="789.27" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -5605,8 +5605,8 @@
 <text text-anchor="" x="755.77" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/buffer.(*Buffer).ServeHTTP (359 samples, 17.57%)</title><rect x="622.2" y="465" width="207.4" height="15.0" fill="rgb(212,102,35)" rx="2" ry="2" />
-<text text-anchor="" x="625.24" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevoma/SzechuanS..</text>
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/buffer.(*Buffer).ServeHTTP (359 samples, 17.57%)</title><rect x="622.2" y="465" width="207.4" height="15.0" fill="rgb(212,102,35)" rx="2" ry="2" />
+<text text-anchor="" x="625.24" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/dustin-decker/SzechuanS..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
 <title>runtime.(*mcache).nextFree (14 samples, 0.69%)</title><rect x="708.9" y="273" width="8.1" height="15.0" fill="rgb(250,54,28)" rx="2" ry="2" />
@@ -5729,7 +5729,7 @@
 <text text-anchor="" x="1106.94" y="523.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/ratelimit.(*TokenLimiter).consumeRates (4 samples, 0.20%)</title><rect x="788.6" y="369" width="2.3" height="15.0" fill="rgb(224,143,37)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/ratelimit.(*TokenLimiter).consumeRates (4 samples, 0.20%)</title><rect x="788.6" y="369" width="2.3" height="15.0" fill="rgb(224,143,37)" rx="2" ry="2" />
 <text text-anchor="" x="791.58" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -5981,7 +5981,7 @@
 <text text-anchor="" x="507.41" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/codahale/hdrhistogram.(*Histogram).getBucketIndex (1 samples, 0.05%)</title><rect x="669.6" y="273" width="0.6" height="15.0" fill="rgb(207,166,1)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/codahale/hdrhistogram.(*Histogram).getBucketIndex (1 samples, 0.05%)</title><rect x="669.6" y="273" width="0.6" height="15.0" fill="rgb(207,166,1)" rx="2" ry="2" />
 <text text-anchor="" x="672.60" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -6465,7 +6465,7 @@
 <text text-anchor="" x="550.73" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/ratelimit.(*TokenBucketSet).Update (4 samples, 0.20%)</title><rect x="788.6" y="353" width="2.3" height="15.0" fill="rgb(207,56,46)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/ratelimit.(*TokenBucketSet).Update (4 samples, 0.20%)</title><rect x="788.6" y="353" width="2.3" height="15.0" fill="rgb(207,56,46)" rx="2" ry="2" />
 <text text-anchor="" x="791.58" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -6477,7 +6477,7 @@
 <text text-anchor="" x="485.46" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/forward.(*HeaderRewriter).Rewrite (14 samples, 0.69%)</title><rect x="672.5" y="321" width="8.1" height="15.0" fill="rgb(250,125,4)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/forward.(*HeaderRewriter).Rewrite (14 samples, 0.69%)</title><rect x="672.5" y="321" width="8.1" height="15.0" fill="rgb(250,125,4)" rx="2" ry="2" />
 <text text-anchor="" x="675.49" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -6501,7 +6501,7 @@
 <text text-anchor="" x="737.87" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/mailgun/multibuf.(*writerOnce).Reader (5 samples, 0.24%)</title><rect x="624.0" y="449" width="2.9" height="15.0" fill="rgb(220,168,1)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/mailgun/multibuf.(*writerOnce).Reader (5 samples, 0.24%)</title><rect x="624.0" y="449" width="2.9" height="15.0" fill="rgb(220,168,1)" rx="2" ry="2" />
 <text text-anchor="" x="626.97" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -6513,15 +6513,15 @@
 <text text-anchor="" x="1105.21" y="523.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/crewjam/saml/samlsp.(*Middleware).IsAuthorized (339 samples, 16.59%)</title><rect x="426.4" y="465" width="195.8" height="15.0" fill="rgb(234,109,37)" rx="2" ry="2" />
-<text text-anchor="" x="429.44" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevoma/Szechua..</text>
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/crewjam/saml/samlsp.(*Middleware).IsAuthorized (339 samples, 16.59%)</title><rect x="426.4" y="465" width="195.8" height="15.0" fill="rgb(234,109,37)" rx="2" ry="2" />
+<text text-anchor="" x="429.44" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/dustin-decker/Szechua..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
 <title>runtime.scanstack (1 samples, 0.05%)</title><rect x="628.0" y="305" width="0.6" height="15.0" fill="rgb(233,206,26)" rx="2" ry="2" />
 <text text-anchor="" x="631.01" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/cbreaker.(*CircuitBreaker).serve (216 samples, 10.57%)</title><rect x="667.9" y="401" width="124.7" height="15.0" fill="rgb(245,204,39)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/cbreaker.(*CircuitBreaker).serve (216 samples, 10.57%)</title><rect x="667.9" y="401" width="124.7" height="15.0" fill="rgb(245,204,39)" rx="2" ry="2" />
 <text text-anchor="" x="670.87" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevo..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -6981,7 +6981,7 @@
 <text text-anchor="" x="621.19" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/mailgun/multibuf.(*writerOnce).Write (18 samples, 0.88%)</title><rect x="693.3" y="257" width="10.4" height="15.0" fill="rgb(218,71,34)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/mailgun/multibuf.(*writerOnce).Write (18 samples, 0.88%)</title><rect x="693.3" y="257" width="10.4" height="15.0" fill="rgb(218,71,34)" rx="2" ry="2" />
 <text text-anchor="" x="696.28" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -7009,7 +7009,7 @@
 <text text-anchor="" x="890.35" y="507.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/buffer.(*Buffer).copyRequest (9 samples, 0.44%)</title><rect x="628.6" y="449" width="5.2" height="15.0" fill="rgb(238,176,46)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/buffer.(*Buffer).copyRequest (9 samples, 0.44%)</title><rect x="628.6" y="449" width="5.2" height="15.0" fill="rgb(238,176,46)" rx="2" ry="2" />
 <text text-anchor="" x="631.59" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -7221,7 +7221,7 @@
 <text text-anchor="" x="1093.08" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/dgrijalva/jwt-go.DecodeSegment (29 samples, 1.42%)</title><rect x="576.6" y="417" width="16.8" height="15.0" fill="rgb(239,169,52)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/dgrijalva/jwt-go.DecodeSegment (29 samples, 1.42%)</title><rect x="576.6" y="417" width="16.8" height="15.0" fill="rgb(239,169,52)" rx="2" ry="2" />
 <text text-anchor="" x="579.61" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -7301,7 +7301,7 @@
 <text text-anchor="" x="746.53" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/dgrijalva/jwt-go.(*SigningMethodHMAC).Verify (51 samples, 2.50%)</title><rect x="547.2" y="417" width="29.4" height="15.0" fill="rgb(237,35,39)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/dgrijalva/jwt-go.(*SigningMethodHMAC).Verify (51 samples, 2.50%)</title><rect x="547.2" y="417" width="29.4" height="15.0" fill="rgb(237,35,39)" rx="2" ry="2" />
 <text text-anchor="" x="550.15" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >gi..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -7645,7 +7645,7 @@
 <text text-anchor="" x="420.77" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/crewjam/saml/samlsp.(*TokenClaims).Valid (3 samples, 0.15%)</title><rect x="545.4" y="417" width="1.8" height="15.0" fill="rgb(207,92,22)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/crewjam/saml/samlsp.(*TokenClaims).Valid (3 samples, 0.15%)</title><rect x="545.4" y="417" width="1.8" height="15.0" fill="rgb(207,92,22)" rx="2" ry="2" />
 <text text-anchor="" x="548.42" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -7785,7 +7785,7 @@
 <text text-anchor="" x="487.19" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/mailgun/multibuf.New (3 samples, 0.15%)</title><rect x="626.9" y="449" width="1.7" height="15.0" fill="rgb(239,189,30)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/mailgun/multibuf.New (3 samples, 0.15%)</title><rect x="626.9" y="449" width="1.7" height="15.0" fill="rgb(239,189,30)" rx="2" ry="2" />
 <text text-anchor="" x="629.86" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -7861,7 +7861,7 @@
 <text text-anchor="" x="543.80" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/codahale/hdrhistogram.(*Histogram).countsIndexFor (1 samples, 0.05%)</title><rect x="669.6" y="289" width="0.6" height="15.0" fill="rgb(243,183,24)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/codahale/hdrhistogram.(*Histogram).countsIndexFor (1 samples, 0.05%)</title><rect x="669.6" y="289" width="0.6" height="15.0" fill="rgb(243,183,24)" rx="2" ry="2" />
 <text text-anchor="" x="672.60" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -7993,7 +7993,7 @@
 <text text-anchor="" x="250.96" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/trace.(*Tracer).newRecord (5 samples, 0.24%)</title><rect x="794.4" y="433" width="2.8" height="15.0" fill="rgb(225,187,2)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/trace.(*Tracer).newRecord (5 samples, 0.24%)</title><rect x="794.4" y="433" width="2.8" height="15.0" fill="rgb(225,187,2)" rx="2" ry="2" />
 <text text-anchor="" x="797.36" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -8233,7 +8233,7 @@
 <text text-anchor="" x="653.54" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/trace.bodyBytes (4 samples, 0.20%)</title><rect x="794.4" y="417" width="2.3" height="15.0" fill="rgb(232,32,6)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/trace.bodyBytes (4 samples, 0.20%)</title><rect x="794.4" y="417" width="2.3" height="15.0" fill="rgb(232,32,6)" rx="2" ry="2" />
 <text text-anchor="" x="797.36" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -8393,7 +8393,7 @@
 <text text-anchor="" x="1104.05" y="523.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/utils.CopyHeaders (5 samples, 0.24%)</title><rect x="629.2" y="433" width="2.9" height="15.0" fill="rgb(247,133,19)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/utils.CopyHeaders (5 samples, 0.24%)</title><rect x="629.2" y="433" width="2.9" height="15.0" fill="rgb(247,133,19)" rx="2" ry="2" />
 <text text-anchor="" x="632.17" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -8401,7 +8401,7 @@
 <text text-anchor="" x="874.17" y="539.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/mailgun/multibuf.(*multiReaderSeek).Read (3 samples, 0.15%)</title><rect x="983.8" y="529" width="1.7" height="15.0" fill="rgb(214,155,11)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/mailgun/multibuf.(*multiReaderSeek).Read (3 samples, 0.15%)</title><rect x="983.8" y="529" width="1.7" height="15.0" fill="rgb(214,155,11)" rx="2" ry="2" />
 <text text-anchor="" x="986.80" y="539.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -8425,7 +8425,7 @@
 <text text-anchor="" x="539.18" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/memmetrics.(*RollingHDRHistogram).RecordLatencies (2 samples, 0.10%)</title><rect x="669.0" y="353" width="1.2" height="15.0" fill="rgb(205,121,6)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/memmetrics.(*RollingHDRHistogram).RecordLatencies (2 samples, 0.10%)</title><rect x="669.0" y="353" width="1.2" height="15.0" fill="rgb(205,121,6)" rx="2" ry="2" />
 <text text-anchor="" x="672.02" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -8645,7 +8645,7 @@
 <text text-anchor="" x="884.57" y="507.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/roundrobin.(*RoundRobin).NextServer (1 samples, 0.05%)</title><rect x="792.6" y="417" width="0.6" height="15.0" fill="rgb(206,21,35)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/roundrobin.(*RoundRobin).NextServer (1 samples, 0.05%)</title><rect x="792.6" y="417" width="0.6" height="15.0" fill="rgb(206,21,35)" rx="2" ry="2" />
 <text text-anchor="" x="795.62" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -9029,8 +9029,8 @@
 <text text-anchor="" x="845.30" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/dgrijalva/jwt-go.ParseWithClaims (290 samples, 14.19%)</title><rect x="442.6" y="449" width="167.5" height="15.0" fill="rgb(245,48,13)" rx="2" ry="2" />
-<text text-anchor="" x="445.61" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevoma/Sze..</text>
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/dgrijalva/jwt-go.ParseWithClaims (290 samples, 14.19%)</title><rect x="442.6" y="449" width="167.5" height="15.0" fill="rgb(245,48,13)" rx="2" ry="2" />
+<text text-anchor="" x="445.61" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/dustin-decker/Sze..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
 <title>runtime.mallocgc (2 samples, 0.10%)</title><rect x="349.0" y="465" width="1.2" height="15.0" fill="rgb(224,41,21)" rx="2" ry="2" />
@@ -9265,7 +9265,7 @@
 <text text-anchor="" x="1080.95" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/cbreaker.(*CircuitBreaker).ServeHTTP (219 samples, 10.72%)</title><rect x="666.1" y="417" width="126.5" height="15.0" fill="rgb(219,167,18)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/cbreaker.(*CircuitBreaker).ServeHTTP (219 samples, 10.72%)</title><rect x="666.1" y="417" width="126.5" height="15.0" fill="rgb(219,167,18)" rx="2" ry="2" />
 <text text-anchor="" x="669.13" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevo..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -9737,12 +9737,12 @@
 <text text-anchor="" x="294.28" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/memmetrics.(*RTMetrics).Record (3 samples, 0.15%)</title><rect x="668.4" y="385" width="1.8" height="15.0" fill="rgb(225,30,50)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/memmetrics.(*RTMetrics).Record (3 samples, 0.15%)</title><rect x="668.4" y="385" width="1.8" height="15.0" fill="rgb(225,30,50)" rx="2" ry="2" />
 <text text-anchor="" x="671.44" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/trace.(*Tracer).ServeHTTP (281 samples, 13.75%)</title><rect x="634.9" y="449" width="162.3" height="15.0" fill="rgb(222,180,0)" rx="2" ry="2" />
-<text text-anchor="" x="637.94" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevoma/Sz..</text>
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/trace.(*Tracer).ServeHTTP (281 samples, 13.75%)</title><rect x="634.9" y="449" width="162.3" height="15.0" fill="rgb(222,180,0)" rx="2" ry="2" />
+<text text-anchor="" x="637.94" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/dustin-decker/Sz..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
 <title>encoding/json.(*encodeState).marshal (23 samples, 1.13%)</title><rect x="636.7" y="417" width="13.3" height="15.0" fill="rgb(222,192,47)" rx="2" ry="2" />
@@ -9805,7 +9805,7 @@
 <text text-anchor="" x="912.30" y="507.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >n..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/mailgun/multibuf.newBuf (3 samples, 0.15%)</title><rect x="624.0" y="433" width="1.7" height="15.0" fill="rgb(208,76,13)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/mailgun/multibuf.newBuf (3 samples, 0.15%)</title><rect x="624.0" y="433" width="1.7" height="15.0" fill="rgb(208,76,13)" rx="2" ry="2" />
 <text text-anchor="" x="626.97" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -10177,7 +10177,7 @@
 <text text-anchor="" x="252.12" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/buffer.isNetworkError.func1 (1 samples, 0.05%)</title><rect x="634.4" y="433" width="0.5" height="15.0" fill="rgb(242,40,8)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/buffer.isNetworkError.func1 (1 samples, 0.05%)</title><rect x="634.4" y="433" width="0.5" height="15.0" fill="rgb(242,40,8)" rx="2" ry="2" />
 <text text-anchor="" x="637.37" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -10257,7 +10257,7 @@
 <text text-anchor="" x="543.80" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/mailgun/multibuf.(*multiReaderSeek).Close (1 samples, 0.05%)</title><rect x="622.8" y="449" width="0.6" height="15.0" fill="rgb(218,223,45)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/mailgun/multibuf.(*multiReaderSeek).Close (1 samples, 0.05%)</title><rect x="622.8" y="449" width="0.6" height="15.0" fill="rgb(218,223,45)" rx="2" ry="2" />
 <text text-anchor="" x="625.81" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -10273,8 +10273,8 @@
 <text text-anchor="" x="334.14" y="507.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/dgrijalva/jwt-go.(*Parser).ParseWithClaims (290 samples, 14.19%)</title><rect x="442.6" y="433" width="167.5" height="15.0" fill="rgb(234,87,25)" rx="2" ry="2" />
-<text text-anchor="" x="445.61" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sevoma/Sze..</text>
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/dgrijalva/jwt-go.(*Parser).ParseWithClaims (290 samples, 14.19%)</title><rect x="442.6" y="433" width="167.5" height="15.0" fill="rgb(234,87,25)" rx="2" ry="2" />
+<text text-anchor="" x="445.61" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/dustin-decker/Sze..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
 <title>strings.Split (13 samples, 0.64%)</title><rect x="602.6" y="417" width="7.5" height="15.0" fill="rgb(208,79,48)" rx="2" ry="2" />
@@ -10337,7 +10337,7 @@
 <text text-anchor="" x="685.88" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/forward.(*httpForwarder).serveHTTP (199 samples, 9.74%)</title><rect x="671.3" y="353" width="115.0" height="15.0" fill="rgb(208,191,39)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/forward.(*httpForwarder).serveHTTP (199 samples, 9.74%)</title><rect x="671.3" y="353" width="115.0" height="15.0" fill="rgb(208,191,39)" rx="2" ry="2" />
 <text text-anchor="" x="674.33" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >github.com/sev..</text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -10465,7 +10465,7 @@
 <text text-anchor="" x="894.97" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/crewjam/saml.(*ServiceProvider).Metadata (26 samples, 1.27%)</title><rect x="427.6" y="449" width="15.0" height="15.0" fill="rgb(247,129,13)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/crewjam/saml.(*ServiceProvider).Metadata (26 samples, 1.27%)</title><rect x="427.6" y="449" width="15.0" height="15.0" fill="rgb(247,129,13)" rx="2" ry="2" />
 <text text-anchor="" x="430.59" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -10589,7 +10589,7 @@
 <text text-anchor="" x="685.88" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/memmetrics.(*RTMetrics).recordLatency (3 samples, 0.15%)</title><rect x="668.4" y="369" width="1.8" height="15.0" fill="rgb(211,168,38)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/memmetrics.(*RTMetrics).recordLatency (3 samples, 0.15%)</title><rect x="668.4" y="369" width="1.8" height="15.0" fill="rgb(211,168,38)" rx="2" ry="2" />
 <text text-anchor="" x="671.44" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -10681,7 +10681,7 @@
 <text text-anchor="" x="1192.42" y="587.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/utils.(*ProxyWriter).Write (19 samples, 0.93%)</title><rect x="692.7" y="305" width="11.0" height="15.0" fill="rgb(241,205,0)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/utils.(*ProxyWriter).Write (19 samples, 0.93%)</title><rect x="692.7" y="305" width="11.0" height="15.0" fill="rgb(241,205,0)" rx="2" ry="2" />
 <text text-anchor="" x="695.70" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -10901,7 +10901,7 @@
 <text text-anchor="" x="28.02" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/dgrijalva/jwt-go.StandardClaims.Valid (3 samples, 0.15%)</title><rect x="545.4" y="401" width="1.8" height="15.0" fill="rgb(206,109,19)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/dgrijalva/jwt-go.StandardClaims.Valid (3 samples, 0.15%)</title><rect x="545.4" y="401" width="1.8" height="15.0" fill="rgb(206,109,19)" rx="2" ry="2" />
 <text text-anchor="" x="548.42" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
@@ -10945,7 +10945,7 @@
 <text text-anchor="" x="974.10" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
-<title>github.com/sevoma/SzechuanSauce/vendor/github.com/vulcand/oxy/utils.CopyHeaders (9 samples, 0.44%)</title><rect x="797.2" y="449" width="5.2" height="15.0" fill="rgb(238,60,29)" rx="2" ry="2" />
+<title>github.com/dustin-decker/saml-proxy/vendor/github.com/vulcand/oxy/utils.CopyHeaders (9 samples, 0.44%)</title><rect x="797.2" y="449" width="5.2" height="15.0" fill="rgb(238,60,29)" rx="2" ry="2" />
 <text text-anchor="" x="800.24" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
 </g>
 <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">

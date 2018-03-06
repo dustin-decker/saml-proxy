@@ -18,8 +18,8 @@ import (
 
 	"net/http/pprof"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/crewjam/saml/samlsp"
+	log "github.com/sirupsen/logrus"
 	"github.com/vulcand/oxy/buffer"
 	"github.com/vulcand/oxy/cbreaker"
 	"github.com/vulcand/oxy/forward"

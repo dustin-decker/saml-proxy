@@ -1,7 +1,6 @@
-
 # Gopkg.toml example
 #
-# Refer to https://github.com/golang/dep/blob/master/docs/Gopkg.toml.md
+# Refer to https://golang.github.io/dep/docs/Gopkg.toml.html
 # for detailed Gopkg.toml documentation.
 #
 # required = ["github.com/user/thing/cmd/thing"]
@@ -17,20 +16,25 @@
 #   source = "github.com/myfork/project2"
 #
 # [[override]]
-#  name = "github.com/x/y"
-#  version = "2.4.0"
+#   name = "github.com/x/y"
+#   version = "2.4.0"
+#
+# [prune]
+#   non-go = false
+#   go-tests = true
+#   unused-packages = true
 
-
-[[constraint]]
-  name = "github.com/sirupsen/logrus"
-  version = "1.0.3"
 
 [[constraint]]
   name = "github.com/crewjam/saml"
   branch = "master"
 
 [[constraint]]
-  branch = "archis-dev"
+  name = "github.com/sirupsen/logrus"
+  version = "1.0.4"
+
+[[constraint]]
+  branch = "master"
   name = "github.com/vulcand/oxy"
 
 [[constraint]]
@@ -38,5 +42,9 @@
   version = "2.0.0"
 
 [[constraint]]
-  branch = "v2"
   name = "gopkg.in/yaml.v2"
+  version = "2.1.1"
+
+[prune]
+  go-tests = true
+  unused-packages = true

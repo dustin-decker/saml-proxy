@@ -2,12 +2,6 @@
 
 
 [[projects]]
-  name = "github.com/sirupsen/logrus"
-  packages = ["."]
-  revision = "f006c2ac4710855cf0f916dd6b77acf6b048dc6e"
-  version = "v1.0.3"
-
-[[projects]]
   name = "github.com/beevik/etree"
   packages = ["."]
   revision = "15a30b44cfd6c5a16a7ddfe271bf146aaf2d3195"
@@ -22,20 +16,31 @@
 [[projects]]
   branch = "master"
   name = "github.com/crewjam/saml"
-  packages = [".","logger","samlsp","xmlenc"]
-  revision = "5e89d545f563261a14cd84483eb5ff10233e208e"
+  packages = [
+    ".",
+    "logger",
+    "samlsp",
+    "xmlenc"
+  ]
+  revision = "814d1d9c18457deeda08cbda2d38f79bedccfa62"
 
 [[projects]]
   name = "github.com/dgrijalva/jwt-go"
   packages = ["."]
-  revision = "d2709f9f1f31ebcda9651b03077758c1f3a0018c"
-  version = "v3.0.0"
+  revision = "dbeaa9332f19a944acb5736b4456cfcc02140e29"
+  version = "v3.1.0"
 
 [[projects]]
-  branch = "alexander/beats"
+  name = "github.com/gorilla/websocket"
+  packages = ["."]
+  revision = "ea4d1f681babbce9545c9c5f3d5194a789c89f5b"
+  version = "v1.2.0"
+
+[[projects]]
   name = "github.com/gravitational/trace"
   packages = ["."]
-  revision = "bdd69590106bbc949e797d0ed545489ec6f36eca"
+  revision = "0bd13642feb8f57acc0d8e3a568edc34e05a74b9"
+  version = "1.1.3"
 
 [[projects]]
   name = "github.com/jonboulle/clockwork"
@@ -70,14 +75,33 @@
 [[projects]]
   branch = "master"
   name = "github.com/russellhaering/goxmldsig"
-  packages = [".","etreeutils","types"]
-  revision = "b7efc6231e45b10bfd779852831c8bb59b350ec5"
+  packages = [
+    ".",
+    "etreeutils",
+    "types"
+  ]
+  revision = "a348271703b2f18f06407858abd235ccbfebf33f"
 
 [[projects]]
-  branch = "archis-dev"
+  name = "github.com/sirupsen/logrus"
+  packages = ["."]
+  revision = "d682213848ed68c0a260ca37d6dd5ace8423f5ba"
+  version = "v1.0.4"
+
+[[projects]]
+  branch = "master"
   name = "github.com/vulcand/oxy"
-  packages = ["buffer","cbreaker","forward","memmetrics","ratelimit","roundrobin","trace","utils"]
-  revision = "a8bc3c3a9de2a7b3c2bf9d927fa4d83824eb6371"
+  packages = [
+    "buffer",
+    "cbreaker",
+    "forward",
+    "memmetrics",
+    "ratelimit",
+    "roundrobin",
+    "trace",
+    "utils"
+  ]
+  revision = "dacf34285ce530b272e9fe04d2f45f52e6374e36"
 
 [[projects]]
   name = "github.com/vulcand/predicate"
@@ -87,37 +111,57 @@
 
 [[projects]]
   name = "goji.io"
-  packages = [".","internal","pat","pattern"]
+  packages = [
+    ".",
+    "internal",
+    "pat",
+    "pattern"
+  ]
   revision = "0d89ff54b2c18c9c4ba530e32496aef902d3c6cd"
   version = "v2.0"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
-  packages = ["ripemd160","ssh/terminal"]
-  revision = "ed5229da99e3a6df35c756cd64b6982d19505d86"
+  packages = [
+    "ripemd160",
+    "ssh/terminal"
+  ]
+  revision = "91a49db82a88618983a78a06c1cbd4e00ab749ab"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = ["context"]
+  revision = "22ae77b79946ea320088417e4d50825671d82d57"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/sys"
-  packages = ["unix","windows"]
-  revision = "8dbc5d05d6edcc104950cc299a1ce6641235bc86"
+  packages = [
+    "unix",
+    "windows"
+  ]
+  revision = "dd2ff4accc098aceecb86b36eaa7829b2a17b1c9"
 
 [[projects]]
   branch = "v2"
   name = "gopkg.in/mgo.v2"
-  packages = ["bson","internal/json"]
+  packages = [
+    "bson",
+    "internal/json"
+  ]
   revision = "3f83fa5005286a7fe593b055f0d7771a7dce4655"
 
 [[projects]]
-  branch = "v2"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
-  revision = "eb3733d160e74a9c7e442f435eb3bea458e1d19f"
+  revision = "7f97868eec74b32b0982dd158a51a446d1da7eb5"
+  version = "v2.1.1"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "5cf58bdb13e9ecea871eafb66fd5f789697b3e7b3a4287d1ebc33b52016bca78"
+  inputs-digest = "5a7c971e3618a416b8c5a5da0c3d09368788c585a0129cacf4c2f8aa594b466c"
   solver-name = "gps-cdcl"
   solver-version = 1

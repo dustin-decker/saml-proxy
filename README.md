@@ -1,4 +1,4 @@
-# SzechuanSauce
+# saml-proxy
 
 A SAML 2.0 auth providing reverse proxy with fancy features like roundrobin
 load balancing, a buffer for retrying requests, a Hystrix-style circuit breaker,
@@ -15,6 +15,9 @@ Credit where credit is due:
 ## Get up and running
 Install deps:
 `dep ensure`
+
+Build:
+`go build`
 
 Configure your stuff based on `config.yaml.example`
 
