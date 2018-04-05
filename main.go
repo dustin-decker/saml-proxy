@@ -184,7 +184,7 @@ func main() {
 	// Use mux for explicit paths and so no other routes are accidently exposed
 	router := goji.NewMux()
 
-	if logLevel == log.DebugLevel || logLevel == log.InfoLevel {
+	if logLevel == log.DebugLevel {
 		attachProfiler(router)
 	}
 
