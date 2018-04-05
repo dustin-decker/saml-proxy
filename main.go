@@ -34,13 +34,13 @@ import (
 // Config for reverse proxy settings and RBAC users and groups
 // Unmarshalled from config on disk
 type Config struct {
-	ListenInterface      string `yaml:"listen_interface"`
-	ListenPort           int    `yaml:"listen_port"`
-	Targets              []string
-	IdpMetadataURL       string `yaml:"idp_metadata_url"`
-	ServiceRootURL       string `yaml:"service_root_url"`
-	Cert                 string
-	Key                  string
+	ListenInterface      string        `yaml:"listen_interface"`
+	ListenPort           int           `yaml:"listen_port"`
+	Targets              []string      `yaml:"targets"`
+	IdpMetadataURL       string        `yaml:"idp_metadata_url"`
+	ServiceRootURL       string        `yaml:"service_root_url"`
+	Cert                 string        `yaml:"cert"`
+	Key                  string        `yaml:"key"`
 	RateLimitAvgMinute   int64         `yaml:"rate_limit_avg_minute"`
 	RateLimitBurstSecond int64         `yaml:"rate_limit_burst_second"`
 	TraceRequestHeaders  []string      `yaml:"trace_request_headers"`
