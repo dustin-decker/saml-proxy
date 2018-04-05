@@ -4,15 +4,12 @@ A SAML 2.0 auth providing reverse proxy with fancy features like roundrobin
 load balancing, a buffer for retrying requests, a Hystrix-style circuit breaker,
 and rate limiting.
 
-Credit where credit is due:
-
-- github.com/crewjam/saml for the fantastic SAML+ library
-- github.com/vulcand/oxy for most of the higher-level network components
-
 ## Roadmap
 
 - Add optional mutual TLS authentication
+- Support separate upstream targets by hostname
 - Support custom entity descriptor
+- Healthcheck and metrics API
 
 ## Get up and running
 
@@ -22,7 +19,7 @@ Install deps:
 Build:
 `go build`
 
-Configure your stuff based on `config.yaml.example`
+Configure your stuff based on `config.yaml.example` and name it `config.yaml`
 
 Create your cert and key
 
