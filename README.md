@@ -6,7 +6,9 @@ and rate limiting.
 
 ## Roadmap
 
+- Add TLS termination
 - Add optional mutual TLS authentication
+- Support built-in RBAC in addition to passing users and groups upstream (current behavior)
 - Support separate upstream targets by hostname
 - Support custom entity descriptor
 - Healthcheck and metrics API
