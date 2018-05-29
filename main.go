@@ -29,7 +29,6 @@ import (
 )
 
 // Config for reverse proxy settings and RBAC users and groups
-// Unmarshalled from config on disk
 type Config struct {
 	ListenInterface      string        `yaml:"listen_interface"`
 	ListenPort           int           `yaml:"listen_port"`
