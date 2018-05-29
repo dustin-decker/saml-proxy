@@ -4,13 +4,13 @@ import (
 	"crypto/rsa"
 	"crypto/tls"
 	"crypto/x509"
+	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
-	"path"
 	"time"
 
 	yaml "gopkg.in/yaml.v2"
@@ -45,21 +45,19 @@ type Config struct {
 	LogLevel             string        `yaml:"log_level"`
 }
 
-func (C *Config) getConf() *Config {
-
-	pwd, err := os.Getwd()
-	checkErr(err)
-	yamlFile, err := ioutil.ReadFile(path.Join(pwd, os.Args[1]))
+func (C *Config) getConf(configPath string) {
+	yamlFile, err := ioutil.ReadFile(configPath)
 	checkErr(err)
 	err = yaml.Unmarshal(yamlFile, C)
 	checkErr(err)
-
-	return C
 }
 
 func main() {
+	var configPath string
+	flag.StringVar(&configPath, "c", "config.yaml", "path to the config file")
+	flag.Parse()
 	var C Config
-	C.getConf()
+	C.getConf(configPath)
 
 	log.SetFormatter(&log.JSONFormatter{})
 	log.SetOutput(os.Stdout)
