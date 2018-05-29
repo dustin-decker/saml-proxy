@@ -4,8 +4,8 @@ listen_port: 9090
 targets:
   - http://localhost:8080
 
-rate_limit_avg_minute: 500
-rate_limit_burst_second: 50
+rate_limit_avg_minute: 6000
+rate_limit_burst_second: 300
 
 idp_metadata_url: https://some.idp/metadata/32093329
 service_root_url: http://localhost:9090
