@@ -11,12 +11,9 @@ import (
 	"net/url"
 	"os"
 	"path"
-	"runtime"
 	"time"
 
 	yaml "gopkg.in/yaml.v2"
-
-	"net/http/pprof"
 
 	"github.com/crewjam/saml/samlsp"
 	log "github.com/sirupsen/logrus"
@@ -60,19 +57,6 @@ func (C *Config) getConf() *Config {
 	return C
 }
 
-func attachProfiler(router *goji.Mux) {
-	router.HandleFunc(pat.New("/debug/pprof/"), pprof.Index)
-	router.HandleFunc(pat.New("/debug/pprof/cmdline"), pprof.Cmdline)
-	router.HandleFunc(pat.New("/debug/pprof/profile"), pprof.Profile)
-	router.HandleFunc(pat.New("/debug/pprof/symbol"), pprof.Symbol)
-
-	// Manually add support for paths linked to by index page at /debug/pprof/
-	router.Handle(pat.New("/debug/pprof/goroutine"), pprof.Handler("goroutine"))
-	router.Handle(pat.New("/debug/pprof/heap"), pprof.Handler("heap"))
-	router.Handle(pat.New("/debug/pprof/threadcreate"), pprof.Handler("threadcreate"))
-	router.Handle(pat.New("/debug/pprof/block"), pprof.Handler("block"))
-}
-
 func main() {
 	var C Config
 	C.getConf()
@@ -82,22 +66,6 @@ func main() {
 	logLevel, err := log.ParseLevel(C.LogLevel)
 	checkErr(err)
 	log.SetLevel(logLevel)
-
-	go func() {
-		for {
-			var m runtime.MemStats
-			runtime.ReadMemStats(&m)
-			log.WithFields(log.Fields{
-				"alloc":              fmt.Sprintf("%v", m.Alloc),
-				"total-alloc":        fmt.Sprintf("%v", m.TotalAlloc/1024),
-				"sys":                fmt.Sprintf("%v", m.Sys/1024),
-				"num-gc":             fmt.Sprintf("%v", m.NumGC),
-				"goroutines":         fmt.Sprintf("%v", runtime.NumGoroutine()),
-				"stop-pause-nanosec": fmt.Sprintf("%v", m.PauseTotalNs),
-			}).Warn("Process stats")
-			time.Sleep(60 * time.Second)
-		}
-	}()
 
 	keyPair, err := tls.LoadX509KeyPair(C.Cert, C.Key)
 	checkErr(err)
@@ -122,6 +90,7 @@ func main() {
 	// reverse proxy layer
 	fwd, err := forward.New()
 	checkErr(err)
+
 	// rate-limiting layers
 	extractor, err := utils.NewExtractor("client.ip")
 	checkErr(err)
@@ -130,16 +99,19 @@ func main() {
 	checkErr(err)
 	rm, err := ratelimit.New(fwd, extractor, rates)
 	checkErr(err)
+
 	// circuit-breaker layer
 	const triggerNetRatio = `NetworkErrorRatio() > 0.5`
 	cb, err := cbreaker.New(rm, triggerNetRatio)
 	checkErr(err)
+
 	// load balancing layer
 	lb, err := roundrobin.New(cb)
 	checkErr(err)
+
 	// trace layer
 	trace, err := trace.New(lb, io.Writer(os.Stdout),
-		trace.Optiontrace.RequestHeaders(C.TraceRequestHeaders...))
+		trace.Option(trace.RequestHeaders(C.TraceRequestHeaders...)))
 	checkErr(err)
 
 	// buffer will read the request body and will replay the request again in case if forward returned status
@@ -157,10 +129,6 @@ func main() {
 
 	// Use mux for explicit paths and so no other routes are accidently exposed
 	router := goji.NewMux()
-
-	if logLevel == log.DebugLevel {
-		attachProfiler(router)
-	}
 
 	// This endpoint handles SAML auth flow
 	router.Handle(pat.New("/saml/*"), samlSP)
