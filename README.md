@@ -1,6 +1,6 @@
 # saml-proxy
 
-[![Build Status](https://travis-ci.org/dustin-decker/saml-proxy.svg?branch=master)](https://travis-ci.org/dustin-decker/saml-proxy)
+[![Build Status](https://travis-ci.com/dustin-decker/saml-proxy.svg?branch=master)](https://travis-ci.com/dustin-decker/saml-proxy)
 
 A SAML 2.0 auth providing reverse proxy with fancy features like roundrobin
 load balancing, a buffer for retrying requests, a Hystrix-style circuit breaker,
