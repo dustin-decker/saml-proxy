@@ -3,3 +3,4 @@ myservice*
 debugserver.py
 config.yaml
 saml-proxy
+bin/saml-proxy
