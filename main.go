@@ -50,15 +50,12 @@ type Config struct {
 
 func (C *Config) getConf() *Config {
 
-	pwd, _ := os.Getwd()
+	pwd, err := os.Getwd()
+	checkErr(err)
 	yamlFile, err := ioutil.ReadFile(path.Join(pwd, os.Args[1]))
-	if err != nil {
-		log.Error(err)
-	}
+	checkErr(err)
 	err = yaml.Unmarshal(yamlFile, C)
-	if err != nil {
-		log.Error(err)
-	}
+	checkErr(err)
 
 	return C
 }
@@ -83,9 +80,7 @@ func main() {
 	log.SetFormatter(&log.JSONFormatter{})
 	log.SetOutput(os.Stdout)
 	logLevel, err := log.ParseLevel(C.LogLevel)
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 	log.SetLevel(logLevel)
 
 	go func() {
@@ -105,80 +100,59 @@ func main() {
 	}()
 
 	keyPair, err := tls.LoadX509KeyPair(C.Cert, C.Key)
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 	keyPair.Leaf, err = x509.ParseCertificate(keyPair.Certificate[0])
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 
 	idpMetadataURL, err := url.Parse(C.IdpMetadataURL)
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 
 	rootURL, err := url.Parse(C.ServiceRootURL)
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 
-	samlSP, _ := samlsp.New(samlsp.Options{
+	samlSP, err := samlsp.New(samlsp.Options{
 		URL:            *rootURL,
 		Key:            keyPair.PrivateKey.(*rsa.PrivateKey),
 		Certificate:    keyPair.Leaf,
 		IDPMetadataURL: idpMetadataURL,
 		CookieMaxAge:   C.CookieMaxAge,
 	})
+	checkErr(err)
 
 	// reverse proxy layer
 	fwd, err := forward.New()
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 	// rate-limiting layers
 	extractor, err := utils.NewExtractor("client.ip")
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 	rates := ratelimit.NewRateSet()
-	rates.Add(time.Second, C.RateLimitAvgMinute*60, C.RateLimitBurstSecond)
+	err = rates.Add(time.Second, C.RateLimitAvgMinute*60, C.RateLimitBurstSecond)
+	checkErr(err)
 	rm, err := ratelimit.New(fwd, extractor, rates)
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 	// circuit-breaker layer
 	const triggerNetRatio = `NetworkErrorRatio() > 0.5`
 	cb, err := cbreaker.New(rm, triggerNetRatio)
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 	// load balancing layer
 	lb, err := roundrobin.New(cb)
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 	// trace layer
 	trace, err := trace.New(lb, io.Writer(os.Stdout),
-		trace.Option(trace.RequestHeaders(C.TraceRequestHeaders...)))
-	if err != nil {
-		log.Fatal(err)
-	}
+		trace.Optiontrace.RequestHeaders(C.TraceRequestHeaders...))
+	checkErr(err)
 
 	// buffer will read the request body and will replay the request again in case if forward returned status
 	// corresponding to nework error (e.g. Gateway Timeout)
 	buffer, err := buffer.New(trace, buffer.Retry(`IsNetworkError() && Attempts() < 3`))
-	if err != nil {
-		log.Fatal(err)
-	}
+	checkErr(err)
 
 	for _, target := range C.Targets {
 		targetURL, err := url.Parse(target)
-		if err != nil {
-			log.Fatal(err)
-		}
+		checkErr(err)
 		// add target to the load balancer
-		lb.UpsertServer(targetURL)
+		err = lb.UpsertServer(targetURL)
+		checkErr(err)
 	}
 
 	// Use mux for explicit paths and so no other routes are accidently exposed
@@ -204,4 +178,10 @@ func main() {
 	}
 
 	log.Fatal(srv.ListenAndServe())
+}
+
+func checkErr(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
 }

@@ -2,3 +2,4 @@ vendor
 myservice*
 debugserver.py
 config.yaml
+saml-proxy
