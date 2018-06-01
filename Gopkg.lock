@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  name = "github.com/BurntSushi/toml"
+  packages = ["."]
+  revision = "b26d9c308763d68093482582cea63d69be07a0f0"
+  version = "v0.3.0"
+
+[[projects]]
   name = "github.com/beevik/etree"
   packages = ["."]
   revision = "15a30b44cfd6c5a16a7ddfe271bf146aaf2d3195"
@@ -30,6 +36,18 @@
   version = "v3.1.0"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/fatih/camelcase"
+  packages = ["."]
+  revision = "44e46d280b43ec1531bb25252440e34f1b800b65"
+
+[[projects]]
+  name = "github.com/fatih/structs"
+  packages = ["."]
+  revision = "a720dfa8df582c51dee1b36feabb906bde1588bd"
+  version = "v1.0"
+
+[[projects]]
   name = "github.com/gorilla/websocket"
   packages = ["."]
   revision = "ea4d1f681babbce9545c9c5f3d5194a789c89f5b"
@@ -46,6 +64,12 @@
   packages = ["."]
   revision = "2eee05ed794112d45db504eb05aa693efd2b8b09"
   version = "v0.1.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/koding/multiconfig"
+  packages = ["."]
+  revision = "69c27309b2d751c576b59ea9c3726597c2375da3"
 
 [[projects]]
   name = "github.com/labstack/echo"
@@ -190,6 +214,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "dfacc7961cf7fa802a660f1a5832efc7cb6631869cb80fec0ba7b5847ae2e771"
+  inputs-digest = "a16341caba217612d6fd8c971b29eeb3ae532fa94498cca3142b37343bf2bb24"
   solver-name = "gps-cdcl"
   solver-version = 1

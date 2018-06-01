@@ -4,18 +4,14 @@ import (
 	"crypto/rsa"
 	"crypto/tls"
 	"crypto/x509"
-	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
 	"time"
-
-	yaml "gopkg.in/yaml.v2"
 
 	"github.com/crewjam/saml/samlsp"
 	log "github.com/sirupsen/logrus"
@@ -29,68 +25,70 @@ import (
 	"github.com/vulcand/oxy/utils"
 
 	"github.com/labstack/echo"
+
+	"github.com/koding/multiconfig"
 )
 
 // Config for reverse proxy settings and RBAC users and groups
 type Config struct {
-	ListenInterface        string        `yaml:"listen_interface"`
-	ListenPort             int           `yaml:"listen_port"`
+	ConfigPath             string        `default:"config.yaml"`
+	ListenInterface        string        `yaml:"listen_interface" default:"0.0.0.0"`
+	ListenPort             int           `yaml:"listen_port" default:"9090"`
 	Targets                []string      `yaml:"targets"`
 	IdpMetadataURL         string        `yaml:"idp_metadata_url"`
 	ServiceRootURL         string        `yaml:"service_root_url"`
 	CertPath               string        `yaml:"cert_path"`
 	KeyPath                string        `yaml:"key_path"`
-	RateLimitAvgSecond     int64         `yaml:"rate_limit_avg_second"`
-	RateLimitBurstSecond   int64         `yaml:"rate_limit_burst_second"`
+	RateLimitAvgSecond     int64         `yaml:"rate_limit_avg_second" default:"300"`
+	RateLimitBurstSecond   int64         `yaml:"rate_limit_burst_second" default:"500"`
 	TraceRequestHeaders    []string      `yaml:"trace_request_headers"`
 	AddAttributesAsHeaders []string      `yaml:"add_attributes_as_headers"`
-	CookieMaxAge           time.Duration `yaml:"cookie_max_age"`
-	LogLevel               string        `yaml:"log_level"`
+	CookieMaxAge           time.Duration `yaml:"cookie_max_age" default:"4h"`
+	LogLevel               string        `yaml:"log_level" default:"info"`
 }
+
 type server struct {
 	config Config
 }
 
-func (C *Config) getConf(configPath string) {
-	yamlFile, err := ioutil.ReadFile(configPath)
-	if err != nil {
-		log.WithFields(log.Fields{
-			"config_path": configPath,
-			"error":       err.Error()}).Fatal("could not read config")
-	}
-	err = yaml.Unmarshal(yamlFile, C)
-	if err != nil {
-		log.WithFields(log.Fields{
-			"config_path": configPath,
-			"error":       err.Error()}).Fatal("could not parse config")
-	}
-}
-
 func newServer() *server {
-	var configPath string
-	flag.StringVar(&configPath, "c", "config.yaml", "path to the config file")
-	flag.Parse()
-	var C Config
-	absPath, err := filepath.Abs(configPath)
+
+	var cfg Config
+	m := multiconfig.New()
+	// flag.StringVar(&configPath, "c", "config.yaml", "path to the config file")
+	// flag.Parse()
+	err := m.Load(&cfg)
 	if err != nil {
 		log.WithFields(log.Fields{
-			"config_path": configPath,
-			"error":       err.Error()}).Fatal("could not determine absolute path for config")
+			"error": err.Error()}).Warn("could not load config")
 	}
-	C.getConf(absPath)
+	m.MustLoad(&cfg)
+	absPath, err := filepath.Abs(cfg.ConfigPath)
+	if err != nil {
+		log.WithFields(log.Fields{
+			"config_path": absPath,
+			"error":       err.Error()}).Fatal("could not determine absolute path for config")
+	} // panics if there is any error
+	m = multiconfig.NewWithPath(absPath) // supports TOML, JSON and YAML
+	err = m.Load(&cfg)
+	if err != nil {
+		log.WithFields(log.Fields{
+			"config_path": absPath,
+			"error":       err.Error()}).Warn("could not load config file")
+	}
+	m.MustLoad(&cfg) // panics if there is any error
 
-	log.Print("config loaded")
 	log.SetFormatter(&log.JSONFormatter{})
 	log.SetOutput(os.Stdout)
-	logLevel, err := log.ParseLevel(C.LogLevel)
+	logLevel, err := log.ParseLevel(cfg.LogLevel)
 	if err != nil {
 		log.WithFields(log.Fields{
-			"log_level": C.LogLevel,
+			"log_level": cfg.LogLevel,
 			"error":     err.Error()}).Fatal("could not parse log level")
 	}
 	log.SetLevel(logLevel)
 
-	s := server{config: C}
+	s := server{config: cfg}
 	return &s
 }
 
