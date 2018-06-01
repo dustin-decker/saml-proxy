@@ -14,7 +14,6 @@
   revision = "3a0bb77429bd3a61596f5e8a3172445844342120"
 
 [[projects]]
-  branch = "master"
   name = "github.com/crewjam/saml"
   packages = [
     ".",
@@ -22,7 +21,7 @@
     "samlsp",
     "xmlenc"
   ]
-  revision = "814d1d9c18457deeda08cbda2d38f79bedccfa62"
+  revision = "e231b7a1204a93c343c1a5fa2374ca2f6572f715"
 
 [[projects]]
   name = "github.com/dgrijalva/jwt-go"
@@ -49,6 +48,21 @@
   version = "v0.1.0"
 
 [[projects]]
+  name = "github.com/labstack/echo"
+  packages = ["."]
+  revision = "6d227dfea4d2e52cb76856120b3c17f758139b4e"
+  version = "3.3.5"
+
+[[projects]]
+  name = "github.com/labstack/gommon"
+  packages = [
+    "color",
+    "log"
+  ]
+  revision = "588f4e8bddc6cb45c27b448e925c7fd6a5545434"
+  version = "0.2.5"
+
+[[projects]]
   branch = "master"
   name = "github.com/mailgun/minheap"
   packages = ["."]
@@ -73,6 +87,18 @@
   revision = "c1c17f74874f2a5ea48bfb06b5459d4ef2689749"
 
 [[projects]]
+  name = "github.com/mattn/go-colorable"
+  packages = ["."]
+  revision = "167de6bfdfba052fa6b2d3664c8f5272e23c9072"
+  version = "v0.0.9"
+
+[[projects]]
+  name = "github.com/mattn/go-isatty"
+  packages = ["."]
+  revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
+  version = "v0.0.3"
+
+[[projects]]
   branch = "master"
   name = "github.com/russellhaering/goxmldsig"
   packages = [
@@ -90,6 +116,17 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/valyala/bytebufferpool"
+  packages = ["."]
+  revision = "e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/valyala/fasttemplate"
+  packages = ["."]
+  revision = "dcecefd839c4193db0d35b88ec65b4c12d360ab0"
+
+[[projects]]
   name = "github.com/vulcand/oxy"
   packages = [
     "buffer",
@@ -101,7 +138,7 @@
     "trace",
     "utils"
   ]
-  revision = "dacf34285ce530b272e9fe04d2f45f52e6374e36"
+  revision = "7a2284ad8d6f4d362a6b38f3cdcc812291dce293"
 
 [[projects]]
   name = "github.com/vulcand/predicate"
@@ -110,20 +147,11 @@
   version = "v1.0.0"
 
 [[projects]]
-  name = "goji.io"
-  packages = [
-    ".",
-    "internal",
-    "pat",
-    "pattern"
-  ]
-  revision = "0d89ff54b2c18c9c4ba530e32496aef902d3c6cd"
-  version = "v2.0"
-
-[[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
   packages = [
+    "acme",
+    "acme/autocert",
     "ripemd160",
     "ssh/terminal"
   ]
@@ -162,6 +190,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "5a7c971e3618a416b8c5a5da0c3d09368788c585a0129cacf4c2f8aa594b466c"
+  inputs-digest = "dfacc7961cf7fa802a660f1a5832efc7cb6631869cb80fec0ba7b5847ae2e771"
   solver-name = "gps-cdcl"
   solver-version = 1

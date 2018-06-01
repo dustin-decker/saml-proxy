@@ -4,22 +4,22 @@ import (
 	"crypto/rsa"
 	"crypto/tls"
 	"crypto/x509"
+	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
-	"path"
-	"runtime"
+	"path/filepath"
+	"strings"
 	"time"
 
 	yaml "gopkg.in/yaml.v2"
 
-	"net/http/pprof"
-
 	"github.com/crewjam/saml/samlsp"
 	log "github.com/sirupsen/logrus"
+
 	"github.com/vulcand/oxy/buffer"
 	"github.com/vulcand/oxy/cbreaker"
 	"github.com/vulcand/oxy/forward"
@@ -27,174 +27,213 @@ import (
 	"github.com/vulcand/oxy/roundrobin"
 	"github.com/vulcand/oxy/trace"
 	"github.com/vulcand/oxy/utils"
-	goji "goji.io"
-	"goji.io/pat"
+
+	"github.com/labstack/echo"
 )
 
 // Config for reverse proxy settings and RBAC users and groups
-// Unmarshalled from config on disk
 type Config struct {
-	ListenInterface      string        `yaml:"listen_interface"`
-	ListenPort           int           `yaml:"listen_port"`
-	Targets              []string      `yaml:"targets"`
-	IdpMetadataURL       string        `yaml:"idp_metadata_url"`
-	ServiceRootURL       string        `yaml:"service_root_url"`
-	Cert                 string        `yaml:"cert"`
-	Key                  string        `yaml:"key"`
-	RateLimitAvgMinute   int64         `yaml:"rate_limit_avg_minute"`
-	RateLimitBurstSecond int64         `yaml:"rate_limit_burst_second"`
-	TraceRequestHeaders  []string      `yaml:"trace_request_headers"`
-	CookieMaxAge         time.Duration `yaml:"cookie_max_age"`
-	LogLevel             string        `yaml:"log_level"`
+	ListenInterface        string        `yaml:"listen_interface"`
+	ListenPort             int           `yaml:"listen_port"`
+	Targets                []string      `yaml:"targets"`
+	IdpMetadataURL         string        `yaml:"idp_metadata_url"`
+	ServiceRootURL         string        `yaml:"service_root_url"`
+	CertPath               string        `yaml:"cert_path"`
+	KeyPath                string        `yaml:"key_path"`
+	RateLimitAvgSecond     int64         `yaml:"rate_limit_avg_second"`
+	RateLimitBurstSecond   int64         `yaml:"rate_limit_burst_second"`
+	TraceRequestHeaders    []string      `yaml:"trace_request_headers"`
+	AddAttributesAsHeaders []string      `yaml:"add_attributes_as_headers"`
+	CookieMaxAge           time.Duration `yaml:"cookie_max_age"`
+	LogLevel               string        `yaml:"log_level"`
+}
+type server struct {
+	config Config
 }
 
-func (C *Config) getConf() *Config {
-
-	pwd, _ := os.Getwd()
-	yamlFile, err := ioutil.ReadFile(path.Join(pwd, os.Args[1]))
+func (C *Config) getConf(configPath string) {
+	yamlFile, err := ioutil.ReadFile(configPath)
 	if err != nil {
-		log.Error(err)
+		log.WithFields(log.Fields{
+			"config_path": configPath,
+			"error":       err.Error()}).Fatal("could not read config")
 	}
 	err = yaml.Unmarshal(yamlFile, C)
 	if err != nil {
-		log.Error(err)
+		log.WithFields(log.Fields{
+			"config_path": configPath,
+			"error":       err.Error()}).Fatal("could not parse config")
 	}
-
-	return C
 }
 
-func attachProfiler(router *goji.Mux) {
-	router.HandleFunc(pat.New("/debug/pprof/"), pprof.Index)
-	router.HandleFunc(pat.New("/debug/pprof/cmdline"), pprof.Cmdline)
-	router.HandleFunc(pat.New("/debug/pprof/profile"), pprof.Profile)
-	router.HandleFunc(pat.New("/debug/pprof/symbol"), pprof.Symbol)
-
-	// Manually add support for paths linked to by index page at /debug/pprof/
-	router.Handle(pat.New("/debug/pprof/goroutine"), pprof.Handler("goroutine"))
-	router.Handle(pat.New("/debug/pprof/heap"), pprof.Handler("heap"))
-	router.Handle(pat.New("/debug/pprof/threadcreate"), pprof.Handler("threadcreate"))
-	router.Handle(pat.New("/debug/pprof/block"), pprof.Handler("block"))
-}
-
-func main() {
+func newServer() *server {
+	var configPath string
+	flag.StringVar(&configPath, "c", "config.yaml", "path to the config file")
+	flag.Parse()
 	var C Config
-	C.getConf()
+	absPath, err := filepath.Abs(configPath)
+	if err != nil {
+		log.WithFields(log.Fields{
+			"config_path": configPath,
+			"error":       err.Error()}).Fatal("could not determine absolute path for config")
+	}
+	C.getConf(absPath)
 
+	log.Print("config loaded")
 	log.SetFormatter(&log.JSONFormatter{})
 	log.SetOutput(os.Stdout)
 	logLevel, err := log.ParseLevel(C.LogLevel)
 	if err != nil {
-		log.Fatal(err)
+		log.WithFields(log.Fields{
+			"log_level": C.LogLevel,
+			"error":     err.Error()}).Fatal("could not parse log level")
 	}
 	log.SetLevel(logLevel)
 
-	go func() {
-		for {
-			var m runtime.MemStats
-			runtime.ReadMemStats(&m)
-			log.WithFields(log.Fields{
-				"alloc":              fmt.Sprintf("%v", m.Alloc),
-				"total-alloc":        fmt.Sprintf("%v", m.TotalAlloc/1024),
-				"sys":                fmt.Sprintf("%v", m.Sys/1024),
-				"num-gc":             fmt.Sprintf("%v", m.NumGC),
-				"goroutines":         fmt.Sprintf("%v", runtime.NumGoroutine()),
-				"stop-pause-nanosec": fmt.Sprintf("%v", m.PauseTotalNs),
-			}).Warn("Process stats")
-			time.Sleep(60 * time.Second)
+	s := server{config: C}
+	return &s
+}
+
+func (s *server) addSamlHeaders(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		attributes := samlsp.Token(r.Context()).Attributes
+		for _, attr := range s.config.AddAttributesAsHeaders {
+			if val, ok := attributes[attr]; ok {
+				r.Header.Add("X-Saml-"+attr, strings.Join(val, " "))
+			} else {
+				log.WithFields(log.Fields{"attrs_available": attributes,
+					"attr": attr}).Warn("given attr not in attributes")
+			}
 		}
-	}()
-
-	keyPair, err := tls.LoadX509KeyPair(C.Cert, C.Key)
-	if err != nil {
-		log.Fatal(err)
-	}
-	keyPair.Leaf, err = x509.ParseCertificate(keyPair.Certificate[0])
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	idpMetadataURL, err := url.Parse(C.IdpMetadataURL)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	rootURL, err := url.Parse(C.ServiceRootURL)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	samlSP, _ := samlsp.New(samlsp.Options{
-		URL:            *rootURL,
-		Key:            keyPair.PrivateKey.(*rsa.PrivateKey),
-		Certificate:    keyPair.Leaf,
-		IDPMetadataURL: idpMetadataURL,
-		CookieMaxAge:   C.CookieMaxAge,
+		next.ServeHTTP(w, r)
 	})
+}
 
+func (s *server) getMiddleware() http.Handler {
 	// reverse proxy layer
 	fwd, err := forward.New()
 	if err != nil {
-		log.Fatal(err)
+		log.WithFields(log.Fields{"error": err.Error()}).Fatal("could not initialize reverse proxy middleware")
 	}
+
 	// rate-limiting layers
-	extractor, err := utils.NewExtractor("client.ip")
+	var extractorSource = "client.ip"
+	extractor, err := utils.NewExtractor(extractorSource)
 	if err != nil {
-		log.Fatal(err)
+		log.WithFields(log.Fields{"extractor": extractorSource,
+			"error": err.Error()}).Fatal("could not use given rate limiting extractor")
 	}
 	rates := ratelimit.NewRateSet()
-	rates.Add(time.Second, C.RateLimitAvgMinute*60, C.RateLimitBurstSecond)
+	err = rates.Add(time.Second, s.config.RateLimitAvgSecond, s.config.RateLimitBurstSecond)
+	if err != nil {
+		log.WithFields(log.Fields{
+			"error": err.Error()}).Fatal("could not set rate limiting rates")
+	}
 	rm, err := ratelimit.New(fwd, extractor, rates)
 	if err != nil {
-		log.Fatal(err)
+		log.WithFields(log.Fields{"error": err.Error()}).Fatal("could not initialize rate limiter middleware")
 	}
+
 	// circuit-breaker layer
 	const triggerNetRatio = `NetworkErrorRatio() > 0.5`
 	cb, err := cbreaker.New(rm, triggerNetRatio)
 	if err != nil {
-		log.Fatal(err)
+		log.WithFields(log.Fields{"error": err.Error()}).Fatal("could not initialize circuit breaker middleware")
 	}
+
 	// load balancing layer
 	lb, err := roundrobin.New(cb)
 	if err != nil {
-		log.Fatal(err)
+		log.WithFields(log.Fields{"error": err.Error()}).Fatal("could not initialize load balancing middleware")
 	}
+
+	var targetURL *url.URL
+	for _, target := range s.config.Targets {
+		targetURL, err = url.Parse(target)
+		if err != nil {
+			log.WithFields(log.Fields{
+				"target": target,
+				"error":  err.Error()}).Fatal("could not parse target")
+		}
+		// add target to the load balancer
+		err = lb.UpsertServer(targetURL)
+		if err != nil {
+			log.WithFields(log.Fields{
+				"target": target,
+				"error":  err.Error()}).Fatal("could not add target to load balancer")
+		}
+	}
+
 	// trace layer
 	trace, err := trace.New(lb, io.Writer(os.Stdout),
-		trace.Option(trace.RequestHeaders(C.TraceRequestHeaders...)))
+		trace.Option(trace.RequestHeaders(s.config.TraceRequestHeaders...)))
 	if err != nil {
-		log.Fatal(err)
+		log.WithFields(log.Fields{"error": err.Error()}).Fatal("could not initialize request tracing middleware")
 	}
 
 	// buffer will read the request body and will replay the request again in case if forward returned status
 	// corresponding to nework error (e.g. Gateway Timeout)
 	buffer, err := buffer.New(trace, buffer.Retry(`IsNetworkError() && Attempts() < 3`))
 	if err != nil {
-		log.Fatal(err)
+		log.WithFields(log.Fields{"error": err.Error()}).Fatal("could not initialize buffering middleware")
 	}
 
-	for _, target := range C.Targets {
-		targetURL, err := url.Parse(target)
-		if err != nil {
-			log.Fatal(err)
-		}
-		// add target to the load balancer
-		lb.UpsertServer(targetURL)
+	return buffer
+}
+
+func main() {
+	s := newServer()
+
+	keyPair, err := tls.LoadX509KeyPair(s.config.CertPath, s.config.KeyPath)
+	if err != nil {
+		log.WithFields(log.Fields{
+			"cert_path": s.config.CertPath,
+			"key_path":  s.config.KeyPath,
+			"error":     err.Error()}).Fatal("could not load keypair")
+	}
+	keyPair.Leaf, err = x509.ParseCertificate(keyPair.Certificate[0])
+	if err != nil {
+		log.WithFields(log.Fields{
+			"cert_path": s.config.CertPath,
+			"error":     err.Error()}).Fatal("could not parse certificate")
+	}
+
+	idpMetadataURL, err := url.Parse(s.config.IdpMetadataURL)
+	if err != nil {
+		log.WithFields(log.Fields{
+			"idp_metadata_url": s.config.IdpMetadataURL,
+			"error":            err.Error()}).Fatal("could not parse metadata URL")
+	}
+
+	rootURL, err := url.Parse(s.config.ServiceRootURL)
+	if err != nil {
+		log.WithFields(log.Fields{
+			"service_root_url": s.config.IdpMetadataURL,
+			"error":            err.Error()}).Fatal("could not parse service root URL")
+	}
+
+	// initialize SAML middleware
+	samlSP, err := samlsp.New(samlsp.Options{
+		URL:            *rootURL,
+		Key:            keyPair.PrivateKey.(*rsa.PrivateKey),
+		Certificate:    keyPair.Leaf,
+		IDPMetadataURL: idpMetadataURL,
+		CookieMaxAge:   s.config.CookieMaxAge,
+	})
+	if err != nil {
+		log.WithFields(log.Fields{"error": err.Error()}).Fatal("could not initialize SAML middleware")
 	}
 
 	// Use mux for explicit paths and so no other routes are accidently exposed
-	router := goji.NewMux()
-
-	if logLevel == log.DebugLevel {
-		attachProfiler(router)
-	}
+	router := echo.New()
 
 	// This endpoint handles SAML auth flow
-	router.Handle(pat.New("/saml/*"), samlSP)
+	router.Any("/saml/*", echo.WrapHandler(samlSP))
 	// These endpoints require valid session cookie
-	router.Handle(pat.New("/*"), samlSP.RequireAccount(buffer))
+	router.Any("/*", echo.WrapHandler(samlSP.RequireAccount(s.addSamlHeaders(s.getMiddleware()))))
 
 	srv := &http.Server{
-		Addr:    fmt.Sprintf("%s:%d", C.ListenInterface, C.ListenPort),
+		Addr:    fmt.Sprintf("%s:%d", s.config.ListenInterface, s.config.ListenPort),
 		Handler: router,
 		// This breaks streaming requests
 		ReadTimeout: 45 * time.Second,
