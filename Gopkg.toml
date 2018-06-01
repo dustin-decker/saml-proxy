@@ -27,23 +27,19 @@
 
 [[constraint]]
   name = "github.com/crewjam/saml"
-  branch = "master"
+  revision = "e231b7a1204a93c343c1a5fa2374ca2f6572f715"
 
 [[constraint]]
   name = "github.com/sirupsen/logrus"
   version = "1.0.4"
 
 [[constraint]]
-  branch = "master"
   name = "github.com/vulcand/oxy"
+  revision = "7a2284ad8d6f4d362a6b38f3cdcc812291dce293"
 
 [[constraint]]
-  name = "goji.io"
-  version = "2.0.0"
-
-[[constraint]]
-  name = "gopkg.in/yaml.v2"
-  version = "2.1.1"
+  name = "github.com/labstack/echo"
+  version = "3.3.5"
 
 [prune]
   go-tests = true

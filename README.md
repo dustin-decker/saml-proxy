@@ -5,7 +5,7 @@
 
 A SAML 2.0 auth providing reverse proxy with fancy features like roundrobin
 load balancing, a buffer for retrying requests, a Hystrix-style circuit breaker,
-and rate limiting.
+and rate limiting. The proxy can pass SAML attributes such as username and groups to the target application.
 
 ## Roadmap
 
@@ -24,7 +24,7 @@ Install deps:
 Build:
 `go build`
 
-Configure your stuff based on `config.yaml.example` and name it `config.yaml`
+Configure your stuff based on `config.example.yaml` and name it `config.yaml`
 
 Create your cert and key
 
