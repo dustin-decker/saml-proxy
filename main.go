@@ -31,7 +31,7 @@ import (
 
 // Config for reverse proxy settings and RBAC users and groups
 type Config struct {
-	ConfigPath             string        `default:"config.yaml"`
+	ConfigPath             string
 	ListenInterface        string        `yaml:"listen_interface" default:"0.0.0.0"`
 	ListenPort             int           `yaml:"listen_port" default:"9090"`
 	Targets                []string      `yaml:"targets"`
@@ -55,28 +55,30 @@ func newServer() *server {
 
 	var cfg Config
 	m := multiconfig.New()
-	// flag.StringVar(&configPath, "c", "config.yaml", "path to the config file")
-	// flag.Parse()
+	// load config once so we can get config path CLI arg
 	err := m.Load(&cfg)
 	if err != nil {
 		log.WithFields(log.Fields{
 			"error": err.Error()}).Warn("could not load config")
 	}
 	m.MustLoad(&cfg)
-	absPath, err := filepath.Abs(cfg.ConfigPath)
-	if err != nil {
-		log.WithFields(log.Fields{
-			"config_path": absPath,
-			"error":       err.Error()}).Fatal("could not determine absolute path for config")
-	} // panics if there is any error
-	m = multiconfig.NewWithPath(absPath) // supports TOML, JSON and YAML
-	err = m.Load(&cfg)
-	if err != nil {
-		log.WithFields(log.Fields{
-			"config_path": absPath,
-			"error":       err.Error()}).Warn("could not load config file")
+	// load and overwrite config if config file is specified as CLI arg
+	if len(cfg.ConfigPath) > 0 {
+		absPath, err := filepath.Abs(cfg.ConfigPath)
+		if err != nil {
+			log.WithFields(log.Fields{
+				"config_path": absPath,
+				"error":       err.Error()}).Fatal("could not determine absolute path for config")
+		} // panics if there is any error
+		m = multiconfig.NewWithPath(absPath) // supports TOML, JSON and YAML
+		err = m.Load(&cfg)
+		if err != nil {
+			log.WithFields(log.Fields{
+				"config_path": absPath,
+				"error":       err.Error()}).Warn("could not load config file")
+		}
+		m.MustLoad(&cfg) // panics if there is any error
 	}
-	m.MustLoad(&cfg) // panics if there is any error
 
 	log.SetFormatter(&log.JSONFormatter{})
 	log.SetOutput(os.Stdout)
