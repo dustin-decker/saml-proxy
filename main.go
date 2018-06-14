@@ -37,8 +37,8 @@ type Config struct {
 	Targets                []string      `yaml:"targets"`
 	IdpMetadataURL         string        `yaml:"idp_metadata_url"`
 	ServiceRootURL         string        `yaml:"service_root_url"`
-	CertPath               string        `yaml:"cert_path"`
-	KeyPath                string        `yaml:"key_path"`
+	CertPath               string        `yaml:"cert_path" default:"public.crt"`
+	KeyPath                string        `yaml:"key_path" default:"private.key"`
 	RateLimitAvgSecond     int64         `yaml:"rate_limit_avg_second" default:"300"`
 	RateLimitBurstSecond   int64         `yaml:"rate_limit_burst_second" default:"500"`
 	TraceRequestHeaders    []string      `yaml:"trace_request_headers"`
@@ -64,7 +64,8 @@ func newServer() *server {
 	m.MustLoad(&cfg)
 	// load and overwrite config if config file is specified as CLI arg
 	if len(cfg.ConfigPath) > 0 {
-		absPath, err := filepath.Abs(cfg.ConfigPath)
+		var absPath string
+		absPath, err = filepath.Abs(cfg.ConfigPath)
 		if err != nil {
 			log.WithFields(log.Fields{
 				"config_path": absPath,
@@ -78,6 +79,10 @@ func newServer() *server {
 				"error":       err.Error()}).Warn("could not load config file")
 		}
 		m.MustLoad(&cfg) // panics if there is any error
+	}
+
+	if len(cfg.IdpMetadataURL) == 0 {
+		log.Fatal("missing configuration options")
 	}
 
 	log.SetFormatter(&log.JSONFormatter{})

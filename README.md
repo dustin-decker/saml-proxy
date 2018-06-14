@@ -16,7 +16,7 @@ and rate limiting. The proxy can pass SAML attributes such as username and group
 - Support custom entity descriptor
 - Healthcheck and metrics API
 
-## Get up and running
+## Build
 
 Install deps:
 `dep ensure`
@@ -24,10 +24,65 @@ Install deps:
 Build:
 `go build`
 
-Configure your stuff based on `config.example.yaml` and name it `config.yaml`
+## Usage
 
-Create your cert and key
+First, create your cert and key. They are required for signing sessions.
 
-```openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"```
+```openssl req -x509 -newkey rsa:2048 -keyout private.key -out public.crt -days 365 -nodes -subj "/CN=myservice.example.com"```
 
-Compile and run with `-c /path/to/config.yaml`
+There are three options for configuration:
+
+- YAML file
+- Environment variables
+- CLI flags
+
+You can customize [`config.example.yaml`](config.example.yaml) and run with the `configpath` flag or env var, otherwise this is the usage:
+
+```bash
+./saml-proxy -h
+Usage of ./saml-proxy:
+  -addattributesasheaders
+    	Change value of AddAttributesAsHeaders. (default [])
+  -certpath
+    	Change value of CertPath. (default public.crt)
+  -configpath
+    	Change value of ConfigPath.
+  -cookiemaxage
+    	Change value of CookieMaxAge. (default 4h0m0s)
+  -idpmetadataurl
+    	Change value of IdpMetadataURL.
+  -keypath
+    	Change value of KeyPath. (default private.key)
+  -listeninterface
+    	Change value of ListenInterface. (default 0.0.0.0)
+  -listenport
+    	Change value of ListenPort. (default 9090)
+  -loglevel
+    	Change value of LogLevel. (default info)
+  -ratelimitavgsecond
+    	Change value of RateLimitAvgSecond. (default 300)
+  -ratelimitburstsecond
+    	Change value of RateLimitBurstSecond. (default 500)
+  -servicerooturl
+    	Change value of ServiceRootURL.
+  -targets
+    	Change value of Targets. (default [])
+  -tracerequestheaders
+    	Change value of TraceRequestHeaders. (default [])
+
+Generated environment variables:
+   CONFIG_ADDATTRIBUTESASHEADERS
+   CONFIG_CERTPATH
+   CONFIG_CONFIGPATH
+   CONFIG_COOKIEMAXAGE
+   CONFIG_IDPMETADATAURL
+   CONFIG_KEYPATH
+   CONFIG_LISTENINTERFACE
+   CONFIG_LISTENPORT
+   CONFIG_LOGLEVEL
+   CONFIG_RATELIMITAVGSECOND
+   CONFIG_RATELIMITBURSTSECOND
+   CONFIG_SERVICEROOTURL
+   CONFIG_TARGETS
+   CONFIG_TRACEREQUESTHEADERS
+```
