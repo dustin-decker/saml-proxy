@@ -37,6 +37,7 @@ type Config struct {
 	ListenPort             int           `yaml:"listen_port"`
 	Targets                []string      `yaml:"targets"`
 	IdpMetadataURL         string        `yaml:"idp_metadata_url"`
+	AllowIDPInitiated      bool          `yaml:"allow_idp_initiated"`
 	ServiceRootURL         string        `yaml:"service_root_url"`
 	CertPath               string        `yaml:"cert_path"`
 	KeyPath                string        `yaml:"key_path"`
@@ -47,6 +48,7 @@ type Config struct {
 	CookieMaxAge           time.Duration `yaml:"cookie_max_age"`
 	LogLevel               string        `yaml:"log_level"`
 }
+
 type server struct {
 	config Config
 }
@@ -214,11 +216,12 @@ func main() {
 
 	// initialize SAML middleware
 	samlSP, err := samlsp.New(samlsp.Options{
-		URL:            *rootURL,
-		Key:            keyPair.PrivateKey.(*rsa.PrivateKey),
-		Certificate:    keyPair.Leaf,
-		IDPMetadataURL: idpMetadataURL,
-		CookieMaxAge:   s.config.CookieMaxAge,
+		URL:               *rootURL,
+		Key:               keyPair.PrivateKey.(*rsa.PrivateKey),
+		Certificate:       keyPair.Leaf,
+		IDPMetadataURL:    idpMetadataURL,
+		AllowIDPInitiated: s.config.AllowIDPInitiated,
+		CookieMaxAge:      s.config.CookieMaxAge,
 	})
 	if err != nil {
 		log.WithFields(log.Fields{"error": err.Error()}).Fatal("could not initialize SAML middleware")
