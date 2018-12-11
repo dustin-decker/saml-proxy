@@ -8,6 +8,7 @@ rate_limit_avg_second: 300
 rate_limit_burst_second: 500
 
 idp_metadata_url: https://some.idp/metadata/32093329
+allow_idp_initiated: False
 service_root_url: http://localhost:9090
 
 cert_path: myservice.cert
