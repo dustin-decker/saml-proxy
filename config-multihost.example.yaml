@@ -1,0 +1,30 @@
+listen_interface: 0.0.0.0
+listen_port: 9090
+
+hosts:
+  - service_root_url: http://auth1.example.com:9090
+    allow_idp_initiated: true
+    idp_metadata_url: https://rwtest.auth0.com/samlp/metadata/test
+    targets:
+      - https://randywestergren.com
+    no_cache: true
+    add_attributes_as_headers:
+      - memberOf
+      - Username
+  - service_root_url: http://test.localhost:9090
+    allow_idp_initiated: true
+    idp_metadata_url: https://rwtest.auth0.com/samlp/metadata/test2
+    targets:
+      - https://randywestergren.com
+      - http://localhost:8080
+
+cert_path: myservice.cert
+key_path: myservice.key
+
+cookie_max_age: 4h
+
+
+
+# panic, fatal, error, warn, info, debug
+# debug logs cookie information!
+log_level: info

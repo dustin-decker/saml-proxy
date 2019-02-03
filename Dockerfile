@@ -12,7 +12,7 @@ COPY Gopkg.toml Gopkg.lock ./
 RUN dep ensure --vendor-only
 COPY ./ ${PROJECT_PATH}
 RUN export PATH=$PATH:`go env GOHOSTOS`-`go env GOHOSTARCH` \
-    && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build --ldflags '-extldflags "-static"' -o bin/saml-proxy main.go \
+    && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build --ldflags '-extldflags "-static"' -o bin/saml-proxy . \
     && go test $(go list ./... | grep -v /vendor/)
 
 # Production image
