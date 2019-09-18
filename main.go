@@ -4,8 +4,10 @@ import (
 	"crypto/rsa"
 	"crypto/tls"
 	"crypto/x509"
+	"encoding/xml"
 	"flag"
 	"fmt"
+	"github.com/crewjam/saml"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -15,7 +17,7 @@ import (
 	"strings"
 	"time"
 
-	yaml "gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v2"
 
 	"github.com/crewjam/saml/samlsp"
 	log "github.com/sirupsen/logrus"
@@ -37,6 +39,7 @@ type Config struct {
 	ListenPort             int           `yaml:"listen_port"`
 	Targets                []string      `yaml:"targets"`
 	IdpMetadataURL         string        `yaml:"idp_metadata_url"`
+	IdpMetadata            string        `yaml:"idp_metadata"`
 	AllowIDPInitiated      bool          `yaml:"allow_idp_initiated"`
 	ServiceRootURL         string        `yaml:"service_root_url"`
 	CertPath               string        `yaml:"cert_path"`
@@ -183,6 +186,23 @@ func (s *server) getMiddleware() http.Handler {
 	return buffer
 }
 
+func (s *server) readIdpMetadata() (*saml.EntityDescriptor, error) {
+	data, err := ioutil.ReadFile(s.config.IdpMetadata)
+	if err != nil {
+		log.WithFields(log.Fields{"path": s.config.IdpMetadata}).Fatal(err)
+		return nil, err
+	}
+
+	idpMetadata := &saml.EntityDescriptor{}
+	err = xml.Unmarshal(data, idpMetadata)
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	return idpMetadata, nil
+}
+
 func main() {
 	s := newServer()
 
@@ -200,31 +220,46 @@ func main() {
 			"error":     err.Error()}).Fatal("could not parse certificate")
 	}
 
-	idpMetadataURL, err := url.Parse(s.config.IdpMetadataURL)
-	if err != nil {
-		log.WithFields(log.Fields{
-			"idp_metadata_url": s.config.IdpMetadataURL,
-			"error":            err.Error()}).Fatal("could not parse metadata URL")
-	}
-
 	rootURL, err := url.Parse(s.config.ServiceRootURL)
-	if err != nil {
-		log.WithFields(log.Fields{
-			"service_root_url": s.config.IdpMetadataURL,
-			"error":            err.Error()}).Fatal("could not parse service root URL")
-	}
 
-	// initialize SAML middleware
-	samlSP, err := samlsp.New(samlsp.Options{
-		URL:               *rootURL,
-		Key:               keyPair.PrivateKey.(*rsa.PrivateKey),
-		Certificate:       keyPair.Leaf,
-		IDPMetadataURL:    idpMetadataURL,
-		AllowIDPInitiated: s.config.AllowIDPInitiated,
-		CookieMaxAge:      s.config.CookieMaxAge,
-	})
-	if err != nil {
-		log.WithFields(log.Fields{"error": err.Error()}).Fatal("could not initialize SAML middleware")
+	var samlSP *samlsp.Middleware
+
+	if len(s.config.IdpMetadata) > 0 {
+		idpMetadata, _ := s.readIdpMetadata()
+
+		samlSP, _ = samlsp.New(samlsp.Options{
+			URL:         *rootURL,
+			Key:         keyPair.PrivateKey.(*rsa.PrivateKey),
+			Certificate: keyPair.Leaf,
+			IDPMetadata: idpMetadata,
+		})
+
+	} else {
+		idpMetadataURL, err := url.Parse(s.config.IdpMetadataURL)
+		if err != nil {
+			log.WithFields(log.Fields{
+				"idp_metadata_url": s.config.IdpMetadataURL,
+				"error":            err.Error()}).Fatal("could not parse metadata URL")
+		}
+
+		if err != nil {
+			log.WithFields(log.Fields{
+				"service_root_url": s.config.IdpMetadataURL,
+				"error":            err.Error()}).Fatal("could not parse service root URL")
+		}
+
+		// initialize SAML middleware
+		samlSP, err = samlsp.New(samlsp.Options{
+			URL:               *rootURL,
+			Key:               keyPair.PrivateKey.(*rsa.PrivateKey),
+			Certificate:       keyPair.Leaf,
+			IDPMetadataURL:    idpMetadataURL,
+			AllowIDPInitiated: s.config.AllowIDPInitiated,
+			CookieMaxAge:      s.config.CookieMaxAge,
+		})
+		if err != nil {
+			log.WithFields(log.Fields{"error": err.Error()}).Fatal("could not initialize SAML middleware")
+		}
 	}
 
 	// Use mux for explicit paths and so no other routes are accidently exposed
